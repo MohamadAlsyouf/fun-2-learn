@@ -1,16 +1,6 @@
 import React from 'react';
 
 export default class Navbar extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
-
-  // handleClick() {
-  //   // const audio = new Audio('./images/letters.mp3');
-  //   // audio.play();
-  // }
 
   render() {
     return (
