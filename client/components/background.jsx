@@ -34,10 +34,10 @@ export default class InteractiveBg extends React.Component {
     }
 
     return (
-      <>
+      <div className="container">
         <Snowfall
           color="white"
-          snowflakeCount={300}
+          snowflakeCount={80}
           height='100vh'
           width='100vw'
         />
@@ -46,11 +46,29 @@ export default class InteractiveBg extends React.Component {
           loop={true}
           playStatus={this.playStatus()}
           autoLoad={true}
+          autoplay={true}
+          volume={20}
         />
         <div className='col-full music-toggle'>
           {musicIcon}
         </div>
-      </>
+      </div>
+      //   <Snowfall
+      //     color="white"
+      //     snowflakeCount={100}
+      //     height='100vh'
+      //     width='100vw'
+      //   />
+      //   <Sound
+      //     url='./images/monkey.mp3'
+      //     loop={true}
+      //     playStatus={this.playStatus()}
+      //     autoLoad={true}
+      //   />
+      //   <div className='col-full music-toggle'>
+      //     {musicIcon}
+      //   </div>
+      // </>
     );
   }
 }
