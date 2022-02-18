@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .music-toggle {
   text-align: end;
 }
@@ -45,6 +49,23 @@
     cursor: pointer;
     width: 220px;
     height: 220px;
+  }
+
+  .logo {
+    color: white;
+    font-family: cursive;
+    align-items: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    display: inline;
+  }
+
+  .penguin {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 0 10px;
   }
 }
 
@@ -109,5 +130,28 @@
     font-size: 40px;
     cursor: pointer;
     margin: 20px;
+  }
+
+  .navbar {
+    background-color: #44adf4;
+    height: 60px;
+  }
+
+  .logo {
+    color: white;
+    font-family: cursive;
+    font-size: xx-large;
+    align-items: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    display: inline;
+  }
+
+  .penguin {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 0 10px;
   }
 }
