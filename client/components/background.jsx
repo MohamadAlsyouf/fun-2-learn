@@ -53,22 +53,6 @@ export default class InteractiveBg extends React.Component {
           {musicIcon}
         </div>
       </div>
-      //   <Snowfall
-      //     color="white"
-      //     snowflakeCount={100}
-      //     height='100vh'
-      //     width='100vw'
-      //   />
-      //   <Sound
-      //     url='./images/monkey.mp3'
-      //     loop={true}
-      //     playStatus={this.playStatus()}
-      //     autoLoad={true}
-      //   />
-      //   <div className='col-full music-toggle'>
-      //     {musicIcon}
-      //   </div>
-      // </>
     );
   }
 }

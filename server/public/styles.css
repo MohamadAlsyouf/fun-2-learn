@@ -8,18 +8,33 @@ body {
   overflow: hidden;
 }
 
+button {
+  position: fixed;
+}
+
 .fa-music {
-  font-size: 40px;
+  font-size: 30px;
   cursor: pointer;
-  margin: 20px;
+  margin: 10px;
 }
 
 .fa-volume-xmark {
-  font-size: 40px;
+  font-size: 30px;
   cursor: pointer;
-  margin: 20px;
+  margin: 10px;
 }
 
-button {
-  position: fixed;
+.navbar {
+  background-color: #44adf4;
+  height: 50px;
+}
+
+.logo {
+  color: white;
+  font-family: cursive;
+  align-items: center;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: pointer;
 }

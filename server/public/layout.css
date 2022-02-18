@@ -24,8 +24,8 @@
 .topic-img {
   cursor: pointer;
   width: 200px;
-  height: 200px;
-  margin-bottom: 20px;
+  height: 180px;
+  margin-bottom: 30px;
 }
 
 /* tablet media query */
@@ -66,6 +66,18 @@
     width: 300px;
     height: 300px;
   }
+
+  .fa-music {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .fa-volume-xmark {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
 }
 
 /* desktop media query */
@@ -85,5 +97,17 @@
     cursor: pointer;
     width: 350px;
     height: 350px;
+  }
+
+  .fa-music {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .fa-volume-xmark {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
   }
 }
