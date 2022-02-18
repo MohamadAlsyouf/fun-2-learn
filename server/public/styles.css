@@ -1,0 +1,48 @@
+body {
+  background-image: url("./images/snow.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+button {
+  position: fixed;
+}
+
+.fa-music {
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.fa-volume-xmark {
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.navbar {
+  background-color: #44adf4;
+  height: 50px;
+}
+
+.logo {
+  color: white;
+  font-family: cursive;
+  font-size: x-large;
+  align-items: center;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  display: inline;
+}
+
+.penguin {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 0 10px;
+}

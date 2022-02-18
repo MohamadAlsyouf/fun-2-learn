@@ -1,0 +1,157 @@
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.music-toggle {
+  text-align: end;
+}
+
+.topics {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topic-img {
+  cursor: pointer;
+  width: 200px;
+  height: 180px;
+  margin-bottom: 30px;
+}
+
+/* tablet media query */
+@media screen and (min-width: 736px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .topics {
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 90vh;
+    align-items: center;
+  }
+
+  .topic-img {
+    cursor: pointer;
+    width: 220px;
+    height: 220px;
+  }
+
+  .logo {
+    color: white;
+    font-family: cursive;
+    align-items: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    display: inline;
+  }
+
+  .penguin {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 0 10px;
+  }
+}
+
+/* tablet landscape media query */
+@media screen and (min-width: 1000px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .topics {
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 90vh;
+    align-items: center;
+  }
+
+  .topic-img {
+    cursor: pointer;
+    width: 300px;
+    height: 300px;
+  }
+
+  .fa-music {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .fa-volume-xmark {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+}
+
+/* desktop media query */
+@media screen and (min-width: 1300px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .topics {
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 90vh;
+    align-items: center;
+  }
+
+  .topic-img {
+    cursor: pointer;
+    width: 350px;
+    height: 350px;
+  }
+
+  .fa-music {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .fa-volume-xmark {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .navbar {
+    background-color: #44adf4;
+    height: 60px;
+  }
+
+  .logo {
+    color: white;
+    font-family: cursive;
+    font-size: xx-large;
+    align-items: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    display: inline;
+  }
+
+  .penguin {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0 0 10px;
+  }
+}
