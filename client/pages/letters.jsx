@@ -48,6 +48,7 @@ export default class Letters extends React.Component {
     }
   }
 
+  // retrieve letter img relative path and mp3 file for letter sound
   render() {
     return (
       <div className="container">
