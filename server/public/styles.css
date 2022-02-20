@@ -12,6 +12,10 @@ button {
   position: fixed;
 }
 
+a {
+  text-decoration: none;
+}
+
 .fa-music {
   font-size: 30px;
   cursor: pointer;
@@ -25,7 +29,7 @@ button {
 }
 
 .navbar {
-  background-color: #44adf4;
+  background-color: rgb(67, 173, 244);
   height: 50px;
 }
 
@@ -45,4 +49,52 @@ button {
   width: 30px;
   height: 30px;
   margin: 10px 0 0 10px;
+}
+
+/* CAROUSEL */
+
+/* CAROUSEL CSS */
+
+.style {
+  margin: auto;
+  background: rgba(67, 173, 244, 0.9);
+  border: 5px solid black;
+  width: 70%;
+}
+
+.column-third {
+  margin: auto;
+  display: inline-flex;
+}
+
+.circle-container {
+  text-align: center;
+  margin: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.fa-chevron-right {
+  font-size: 50px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.fa-chevron-left {
+  font-size: 50px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.center-img {
+  text-align: center;
+}
+
+.center-img > img {
+  /* width: 300px;
+  height: 300px; */
+}
+
+.fa-circle::before {
+  margin: 5px;
 }

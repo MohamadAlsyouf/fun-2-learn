@@ -2,40 +2,48 @@ import React from 'react';
 import Home from './pages/home';
 import InteractiveBg from './components/background';
 import Navbar from './components/navbar';
-// import { parseRoute } from './lib';
-// import Letters from './pages/letters';
-
-// THE VIEW SWAPPING STUFF IS IN DA COMMENTS CUHHHHHHHHHHHH
+import parseRoute from './lib/parse-route';
+import Letters from './pages/letters';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // route: parseRoute(window.location.hash)
+      route: parseRoute(window.location.hash)
     };
   }
 
-  // componentDidMount() {
-  //   window.addEventListener('hashchange', () => {
-  //     const parsedRoute = parseRoute(window.location.hash);
-  //     this.setState({ route: parsedRoute });
-  //   });
-  // }
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      const parsedRoute = parseRoute(window.location.hash);
+      this.setState({ route: parsedRoute });
+    });
+  }
+
+  renderPage() {
+    const { route } = this.state;
+    if (route.path === '') {
+      return <Home />;
+    }
+    if (route.path === 'letters') {
+      return (<Letters photos={photos}/>);
+    }
+  }
 
   render() {
-    // const { route } = this.state;
-    // if (route.path === '') {
-    //   return <Home />;
-    // }
-    // if (route.path === 'letters') {
-    //   const letterId = route.params.get('letterId');
-    //   return (<Letters letterId={letterId} />);
-    // }
     return (
-      <>
-        <Navbar />
-        <InteractiveBg />
-        <Home />
-      </>
+        <>
+          <Navbar />
+          <InteractiveBg />
+          { this.renderPage() }
+        </>
     );
   }
 }
+
+const photos = [
+  { photo: './images/letters/A.png' },
+  { photo: './images/letters/B.png' },
+  { photo: './images/letters/A.png' },
+  { photo: './images/letters/B.png' },
+  { photo: './images/letters/A.png' }
+];
