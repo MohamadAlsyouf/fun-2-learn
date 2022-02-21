@@ -7,7 +7,6 @@ export default class Letters extends React.Component {
       currentIndex: 0,
       letters: []
     };
-
     this.handleClick = this.handleClick.bind(this);
     this.nextImage = this.nextImage.bind(this);
     this.previousImage = this.previousImage.bind(this);
