@@ -25,7 +25,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'letters') {
-      return (<Letters photos={photos}/>);
+      return (<Letters letter={this.state.letters}/>);
     }
   }
 
@@ -39,11 +39,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const photos = [
-  { photo: './images/letters/A.png' },
-  { photo: './images/letters/B.png' },
-  { photo: './images/letters/A.png' },
-  { photo: './images/letters/B.png' },
-  { photo: './images/letters/A.png' }
-];

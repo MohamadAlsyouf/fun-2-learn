@@ -4,12 +4,21 @@ export default class Letters extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      letters: []
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.nextImage = this.nextImage.bind(this);
     this.previousImage = this.previousImage.bind(this);
+  }
+
+  componentDidMount(letter) {
+    fetch('api/letters')
+      .then(res => res.json())
+      .then(letters => {
+        this.setState({ letters });
+      });
   }
 
   handleClick(event, index) {
@@ -25,7 +34,7 @@ export default class Letters extends React.Component {
   }
 
   nextImage() {
-    if (this.state.currentIndex >= this.props.photos.length - 1) {
+    if (this.state.currentIndex >= this.state.letters.length - 1) {
       this.setState({
         currentIndex: 0
       });
@@ -39,7 +48,7 @@ export default class Letters extends React.Component {
   previousImage() {
     if (this.state.currentIndex <= 0) {
       this.setState({
-        currentIndex: this.props.photos.length - 1
+        currentIndex: this.state.letters.length - 1
       });
     } else {
       this.setState({
@@ -48,8 +57,9 @@ export default class Letters extends React.Component {
     }
   }
 
-  // retrieve letter img relative path and mp3 file for letter sound
   render() {
+    if (this.state.letters.length === 0) return null;
+    const { imageUrl, audioUrl } = this.state.letters[this.state.currentIndex];
     return (
       <div className="container">
         <div className="style">
@@ -58,25 +68,14 @@ export default class Letters extends React.Component {
               <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
             </div>
             <div className="center-img">
-              <img src={this.props.photos[this.state.currentIndex].photo}></img>
+              <img
+              src={imageUrl}
+                onClick={() => { const audio = new Audio(audioUrl); audio.play(); }}>
+              </img>
             </div>
             <div className="column-third">
               <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
             </div>
-          </div>
-          <div className="circle-container">
-            {this.props.photos.map((photo, index) => {
-              return (
-                <i
-                  onClick={event => this.handleClick(event, index)}
-                  key={index}
-                  className={
-                    this.state.currentIndex === index
-                      ? 'fas fa-circle'
-                      : 'far fa-circle'}>
-                </i>
-              );
-            })}
           </div>
         </div>
       </div>

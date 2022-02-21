@@ -12,98 +12,98 @@ insert into "letters" (
   './images/letters/B.mp3'
 ), (
   'C',
-  -- image,
+  './images/letters/C.png',
   './images/letters/C.mp3'
 ), (
   'D',
-  -- image,
+  './images/letters/D.png',
   './images/letters/D.mp3'
 ), (
   'E',
-  -- image,
+  './images/letters/E.png',
   './images/letters/E.mp3'
 ), (
   'F',
-  -- image,
+  './images/letters/F.png',
   './images/letters/F.mp3'
 ), (
   'G',
-  -- image,
+  './images/letters/G.png',
   './images/letters/G.mp3'
 ), (
   'H',
-  -- image,
+  './images/letters/H.png',
   './images/letters/H.mp3'
 ), (
   'I',
-  -- image,
+  './images/letters/I.png',
   './images/letters/i.mp3'
 ), (
   'J',
-  -- image,
+  './images/letters/J.png',
   './images/letters/J.mp3'
 ), (
   'K',
-  -- image,
+  './images/letters/K.png',
   './images/letters/K.mp3'
 ), (
   'L',
-  -- image,
+  './images/letters/L.png',
   './images/letters/L.mp3'
 ), (
   'M',
-  -- image,
+  './images/letters/M.png',
   './images/letters/M.mp3'
 ), (
   'N',
-  -- image,
+  './images/letters/N.png',
   './images/letters/N.mp3'
 ), (
   'O',
-  -- image,
+  './images/letters/O.png',
   './images/letters/O.mp3'
 ), (
   'P',
-  -- image,
+  './images/letters/P.png',
   './images/letters/P.mp3'
 ), (
   'Q',
-  -- image,
+  './images/letters/Q.png',
   './images/letters/Q.mp3'
 ), (
   'R',
-  -- image,
+  './images/letters/R.png',
   './images/letters/R.mp3'
 ), (
   'S',
-  -- image,
+  './images/letters/S.png',
   './images/letters/S.mp3'
 ), (
   'T',
-  -- image,
+  './images/letters/T.png',
   './images/letters/T.mp3'
 ), (
   'U',
-  -- image,
+  './images/letters/U.png',
   './images/letters/U.mp3'
 ), (
   'V',
-  -- image,
+  './images/letters/V.png',
   './images/letters/V.mp3'
 ), (
   'W',
-  -- image,
+  './images/letters/W.png',
   './images/letters/W.mp3'
 ), (
   'X',
-  -- image,
+  './images/letters/X.png',
   './images/letters/X.mp3'
 ), (
   'Y',
-  -- image,
+  './images/letters/Y.png',
   './images/letters/Y.mp3'
 ), (
   'Z',
-  -- image,
+  './images/letters/Z.png',
   './images/letters/Z.mp3'
 )

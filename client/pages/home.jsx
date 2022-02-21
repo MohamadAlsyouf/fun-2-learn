@@ -7,7 +7,6 @@ export default class Home extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // modify this according to the state (the current letter/image showing)
   handleClick() {
     const audio = new Audio('./images/letters.mp3');
     audio.play();
