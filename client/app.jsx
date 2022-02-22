@@ -25,7 +25,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'letters') {
-      return (<Letters letter={this.state.letters}/>);
+      return (<Letters />);
     }
   }
 
