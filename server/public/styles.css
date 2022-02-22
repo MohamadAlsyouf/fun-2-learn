@@ -57,12 +57,15 @@ img {
 
 /* CAROUSEL CSS */
 
+/* change everything to rem instead of fixed */
+
 .style {
   margin: auto;
   background: rgba(67, 173, 244, 0.5);
   border: 5px solid black;
-  border-radius: 5%;
-  width: 70%;
+  border-radius: 3%;
+  width: fit-content;
+  margin-top: 5rem;
 }
 
 .column-third {
@@ -70,22 +73,24 @@ img {
   display: inline-flex;
 }
 
-.circle-container {
+/* .circle-container {
   text-align: center;
   margin: 30px;
   font-size: 20px;
   cursor: pointer;
-}
+} */
 
 .fa-chevron-right {
   font-size: 50px;
-  align-self: center;
+  margin-left: 1.5rem;
+  margin-right: 1rem;
   cursor: pointer;
 }
 
 .fa-chevron-left {
   font-size: 50px;
-  align-self: center;
+  margin-right: 1.5rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 
@@ -93,9 +98,8 @@ img {
   text-align: center;
 }
 
-/* .center-img > img { */
-
-/* width: 300px;
-  height: 300px; */
-
-/* } */
+.center-img > img {
+  width: 250px;
+  height: 250px;
+  margin: 50px 0;
+}
