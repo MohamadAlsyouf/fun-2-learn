@@ -5,7 +5,7 @@ import Sound from 'react-sound';
 export default class InteractiveBg extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ isPlaying: true });
+    this.state = ({ isPlaying: false });
 
     this.handleClick = this.handleClick.bind(this);
     this.playStatus = this.playStatus.bind(this);
