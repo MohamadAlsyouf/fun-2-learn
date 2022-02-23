@@ -101,5 +101,9 @@ img {
 .center-img > img {
   width: 15.625rem;
   height: 15.625rem;
-  margin: 3.125rem 0;
+  margin: 4rem 0 3.125rem;
+}
+
+.word-text {
+  font-size: 2.5rem;
 }

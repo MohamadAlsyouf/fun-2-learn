@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+.text-align {
+  text-align: center;
+}
+
 .music-toggle {
   text-align: end;
 }
@@ -38,6 +42,11 @@
 
 /* PHONE LANDSCAPE */
 @media screen and (min-width: 736px) {
+  .navbar {
+    background-color: #44adf4;
+    height: 3rem;
+  }
+
   .topics {
     flex-direction: row;
     justify-content: space-between;
@@ -72,9 +81,9 @@
   }
 
   .center-img > img {
-    width: 12.5rem;
-    height: 12.5rem;
-    margin: 3.125rem 0;
+    width: 10.5rem;
+    height: 10.5rem;
+    margin: 2.125rem 0;
   }
 }
 
@@ -191,7 +200,7 @@
   .center-img > img {
     width: 21.875rem;
     height: 21.875rem;
-    margin: 3.125rem 0;
+    margin: 2.125rem 0;
   }
 
   .style {
@@ -271,7 +280,7 @@
   .center-img > img {
     width: 21.875rem;
     height: 21.875rem;
-    margin: 3.125rem 0;
+    margin: 2.125rem 0;
   }
 
   .style {

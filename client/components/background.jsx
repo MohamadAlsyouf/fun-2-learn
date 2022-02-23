@@ -46,8 +46,7 @@ export default class InteractiveBg extends React.Component {
           loop={true}
           playStatus={this.playStatus()}
           autoLoad={true}
-          autoplay={true}
-          volume={15}
+          volume={10}
         />
         <div className='col-full music-toggle'>
           {musicIcon}
