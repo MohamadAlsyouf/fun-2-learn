@@ -20,10 +20,12 @@ export default class Letters extends React.Component {
       .then(res => res.json())
       .then(letters => {
         this.setState({ letters });
-        this.autoA = setTimeout(() => {
-          this.setState({ playA: true });
-          const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
-        }, 1500);
+        if (this.state.playA === false) {
+          this.autoA = setTimeout(() => {
+            this.setState({ playA: true });
+            const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
+          }, 1500);
+        }
       });
     fetch('api/words')
       .then(res => res.json())
