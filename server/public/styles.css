@@ -57,28 +57,15 @@ img {
 
 /* CAROUSEL CSS */
 
-/* change everything to rem instead of fixed */
-
 .style {
   margin: auto;
-  background: rgba(67, 173, 244, 0.5);
+  background: rgba(67, 173, 244, 0.8);
   border: 5px solid black;
   border-radius: 3%;
   width: fit-content;
+  height: 27.563rem;
   margin-top: 5rem;
 }
-
-.column-third {
-  margin: auto;
-  display: inline-flex;
-}
-
-/* .circle-container {
-  text-align: center;
-  margin: 30px;
-  font-size: 20px;
-  cursor: pointer;
-} */
 
 .fa-chevron-right {
   font-size: 3.125rem;
@@ -101,9 +88,10 @@ img {
 .center-img > img {
   width: 15.625rem;
   height: 15.625rem;
-  margin: 4rem 0 3.125rem;
+  margin: 4.5rem 0 1.125rem;
 }
 
 .word-text {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-family: cursive;
 }

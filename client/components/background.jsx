@@ -37,7 +37,7 @@ export default class InteractiveBg extends React.Component {
       <div className="container">
         <Snowfall
           color="white"
-          snowflakeCount={50}
+          snowflakeCount={40}
           height='100vh'
           width='100vw'
         />

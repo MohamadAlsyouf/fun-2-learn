@@ -34,6 +34,24 @@ app.get('/api/letters', (req, res) => {
     });
 });
 
+app.get('/api/words', (req, res) => {
+  const sql = `
+    select *
+      from "words"
+    order by "letterId"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
