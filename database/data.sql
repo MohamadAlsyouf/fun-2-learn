@@ -106,4 +106,114 @@ insert into "letters" (
   'Z',
   './images/letters/Z.png',
   './images/letters/Z.mp3'
-)
+);
+
+insert into "words" (
+  "word",
+  "imageUrl",
+  "audioUrl"
+) values (
+  'apple',
+  './images/words/apple.png',
+  './images/words/apple.mp3'
+), (
+  'bear',
+  './images/words/bear.png',
+  './images/words/bear.mp3'
+), (
+  'cat',
+  './images/words/cat.png',
+  './images/words/cat.mp3'
+), (
+  'dog',
+  './images/words/dog.png',
+  './images/words/dog.mp3'
+), (
+  'elephant',
+  './images/words/elephant.png',
+  './images/words/elephant.mp3'
+), (
+  'fruit',
+  './images/words/fruit.png',
+  './images/words/fruit.mp3'
+), (
+  'giraffe',
+  './images/words/giraffe.png',
+  './images/words/giraffe.mp3'
+), (
+  'hippo',
+  './images/words/hippo.png',
+  './images/words/hippo.mp3'
+), (
+  'ice cream',
+  './images/words/ice-cream.png',
+  './images/words/ice-cream.mp3'
+), (
+  'jellyfish',
+  './images/words/jellyfish.png',
+  './images/words/jellyfish.mp3'
+), (
+  'koala',
+  './images/words/koala.png',
+  './images/words/koala.mp3'
+), (
+  'lion',
+  './images/words/lion.png',
+  './images/words/lion.mp3'
+), (
+  'monkey',
+  './images/words/monkey.png',
+  './images/words/monkey.mp3'
+), (
+  'net',
+  './images/words/net.png',
+  './images/words/net.mp3'
+), (
+  'owl',
+  './images/words/owl.png',
+  './images/words/owl.mp3'
+), (
+  'penguin',
+  './images/words/penguin.png',
+  './images/words/penguin.mp3'
+), (
+  'queen',
+  './images/words/queen.png',
+  './images/words/queen.mp3'
+), (
+  'rabbit',
+  './images/words/rabbit.png',
+  './images/words/rabbit.mp3'
+), (
+  'star',
+  './images/words/star.png',
+  './images/words/star.mp3'
+), (
+  'tree',
+  './images/words/tree.png',
+  './images/words/tree.mp3'
+), (
+  'umbrella',
+  './images/words/umbrella.png',
+  './images/words/umbrella.mp3'
+), (
+  'violin',
+  './images/words/violin.png',
+  './images/words/violin.mp3'
+), (
+  'whale',
+  './images/words/whale.png',
+  './images/words/whale.mp3'
+), (
+  'x-ray',
+  './images/words/x-ray.png',
+  './images/words/x-ray.mp3'
+), (
+  'yoyo',
+  './images/words/yoyo.png',
+  './images/words/yoyo.mp3'
+), (
+  'zebra',
+  './images/words/zebra.png',
+  './images/words/zebra.mp3'
+);

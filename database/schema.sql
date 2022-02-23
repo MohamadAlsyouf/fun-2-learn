@@ -43,7 +43,7 @@ CREATE TABLE "public"."numbers" (
 
 
 CREATE TABLE "public"."words" (
-	"letterId" bigint NOT NULL,
+	"letterId" serial NOT NULL,
 	"word" TEXT NOT NULL,
 	"imageUrl" TEXT NOT NULL,
 	"audioUrl" TEXT NOT NULL

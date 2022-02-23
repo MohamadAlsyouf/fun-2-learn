@@ -5,7 +5,7 @@ import Sound from 'react-sound';
 export default class InteractiveBg extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({ isPlaying: true });
+    this.state = ({ isPlaying: false });
 
     this.handleClick = this.handleClick.bind(this);
     this.playStatus = this.playStatus.bind(this);
@@ -37,7 +37,7 @@ export default class InteractiveBg extends React.Component {
       <div className="container">
         <Snowfall
           color="white"
-          snowflakeCount={50}
+          snowflakeCount={40}
           height='100vh'
           width='100vw'
         />
@@ -46,8 +46,7 @@ export default class InteractiveBg extends React.Component {
           loop={true}
           playStatus={this.playStatus()}
           autoLoad={true}
-          autoplay={true}
-          volume={15}
+          volume={10}
         />
         <div className='col-full music-toggle'>
           {musicIcon}

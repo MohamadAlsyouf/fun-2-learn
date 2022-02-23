@@ -21,20 +21,20 @@ img {
 }
 
 .fa-music {
-  font-size: 30px;
+  font-size: 1.875rem;
   cursor: pointer;
-  margin: 10px;
+  margin: 0.625rem;
 }
 
 .fa-volume-xmark {
-  font-size: 30px;
+  font-size: 1.875rem;
   cursor: pointer;
-  margin: 10px;
+  margin: 0.625rem;
 }
 
 .navbar {
   background-color: rgb(67, 173, 244);
-  height: 50px;
+  height: 3.125rem;
 }
 
 .logo {
@@ -43,52 +43,39 @@ img {
   font-size: x-large;
   align-items: center;
   margin: 0;
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 0.625rem;
+  padding-left: 0.625rem;
   cursor: pointer;
   display: inline;
 }
 
 .penguin {
-  width: 30px;
-  height: 30px;
-  margin: 10px 0 0 10px;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin: 0.625rem 0 0 0.625rem;
 }
 
 /* CAROUSEL CSS */
 
-/* change everything to rem instead of fixed */
-
 .style {
   margin: auto;
-  background: rgba(67, 173, 244, 0.5);
+  background: rgba(67, 173, 244, 0.8);
   border: 5px solid black;
   border-radius: 3%;
   width: fit-content;
+  height: 27.563rem;
   margin-top: 5rem;
 }
 
-.column-third {
-  margin: auto;
-  display: inline-flex;
-}
-
-/* .circle-container {
-  text-align: center;
-  margin: 30px;
-  font-size: 20px;
-  cursor: pointer;
-} */
-
 .fa-chevron-right {
-  font-size: 50px;
+  font-size: 3.125rem;
   margin-left: 1.5rem;
   margin-right: 1rem;
   cursor: pointer;
 }
 
 .fa-chevron-left {
-  font-size: 50px;
+  font-size: 3.125rem;
   margin-right: 1.5rem;
   margin-left: 1rem;
   cursor: pointer;
@@ -99,7 +86,12 @@ img {
 }
 
 .center-img > img {
-  width: 250px;
-  height: 250px;
-  margin: 50px 0;
+  width: 15.625rem;
+  height: 15.625rem;
+  margin: 4.5rem 0 1.125rem;
+}
+
+.word-text {
+  font-size: 3.5rem;
+  font-family: cursive;
 }
