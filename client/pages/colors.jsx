@@ -5,64 +5,59 @@ export default class Colors extends React.Component {
     super(props);
     this.state = {
       currentIndex: 0,
-      letters: [],
-      words: [],
-      playA: false,
+      colors: [],
+      playRed: false,
       wordShowing: false
     };
     this.handleClick = this.handleClick.bind(this);
-    this.nextLetter = this.nextLetter.bind(this);
-    this.previousLetter = this.previousLetter.bind(this);
+    this.nextColor = this.nextColor.bind(this);
+    this.previousColor = this.previousColor.bind(this);
   }
 
   componentDidMount() {
-    fetch('api/letters')
+    fetch('api/colors')
       .then(res => res.json())
-      .then(letters => {
-        this.setState({ letters });
-        if (this.state.playA === false) {
-          this.autoA = setTimeout(() => {
-            this.setState({ playA: true });
-            const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
+      .then(colors => {
+        this.setState({ colors });
+        if (this.state.playRed === false) {
+          this.autoRed = setTimeout(() => {
+            this.setState({ playRed: true });
+            const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
           }, 1500);
         }
-      });
-    fetch('api/words')
-      .then(res => res.json())
-      .then(words => {
-        this.setState({ words });
+        // console.log(colors);
       });
   }
 
   componentWillUnmount() {
-    clearTimeout(this.autoA);
+    clearTimeout(this.autoRed);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.currentIndex !== prevState.currentIndex) {
-      const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
+      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     }
   }
 
   handleClick(event, index) {
     if (event.target.className === 'fas fa-chevron-right') {
-      this.nextLetter();
+      this.nextColor();
     } else if (event.target.className === 'fas fa-chevron-left') {
-      this.previousLetter();
+      this.previousColor();
     }
-    if (event.target.id === 'letter') {
+    if (event.target.id === 'image') {
       this.setState({ wordShowing: true });
-      const audio = new Audio(this.state.words[this.state.currentIndex].audioUrl); audio.play();
+      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     } else if (event.target.id === 'word') {
       this.setState({ wordShowing: false });
-      const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
+      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     } else {
       this.setState({ wordShowing: false });
     }
   }
 
-  nextLetter() {
-    if (this.state.currentIndex >= this.state.letters.length - 1) {
+  nextColor() {
+    if (this.state.currentIndex >= this.state.colors.length - 1) {
       this.setState({
         currentIndex: 0
       });
@@ -73,10 +68,10 @@ export default class Colors extends React.Component {
     }
   }
 
-  previousLetter() {
+  previousColor() {
     if (this.state.currentIndex <= 0) {
       this.setState({
-        currentIndex: this.state.letters.length - 1
+        currentIndex: this.state.colors.length - 1
       });
     } else {
       this.setState({
@@ -86,11 +81,9 @@ export default class Colors extends React.Component {
   }
 
   render() {
-    if (this.state.letters.length === 0) return null;
-    if (this.state.words.length === 0) return null;
-    const { imageUrl } = this.state.letters[this.state.currentIndex];
-    const wordImage = this.state.words[this.state.currentIndex].imageUrl;
-    const word = this.state.words[this.state.currentIndex].word;
+    if (this.state.colors.length === 0) return null;
+    const { imageUrl } = this.state.colors[this.state.currentIndex];
+    const color = this.state.colors[this.state.currentIndex].color;
 
     const displayType = !this.state.wordShowing
       ? <div className="style">
@@ -99,11 +92,11 @@ export default class Colors extends React.Component {
             <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
           </div>
           <div className="center-img">
-            <img
-              id='letter'
-              src={imageUrl}
+            <span
+              id='image'
               onClick={this.handleClick}>
-            </img>
+                {color}
+            </span>
           </div>
           <div className="column-third">
             <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
@@ -121,7 +114,7 @@ export default class Colors extends React.Component {
           <div className="center-img">
             <img
               id='word'
-              src={wordImage}
+              src={imageUrl}
               onClick={this.handleClick}>
             </img>
           </div>
@@ -130,14 +123,16 @@ export default class Colors extends React.Component {
           </div>
         </div>
         <div className='col-full text-align'>
-          <span className='word-text'>{word}</span>
+          <span className='word-text'>{color}</span>
         </div>
       </div>;
 
     return (
+      <>
       <div className="container">
         {displayType}
       </div>
+      </>
     );
   }
 }

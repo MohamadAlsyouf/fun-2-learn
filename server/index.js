@@ -55,7 +55,7 @@ app.get('/api/words', (req, res) => {
 app.get('/api/colors', (req, res) => {
   const sql = `
     select *
-      from "words"
+      from "colors"
     order by "colorId"
   `;
   db.query(sql)
