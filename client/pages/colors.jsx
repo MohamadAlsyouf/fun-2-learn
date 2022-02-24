@@ -12,6 +12,8 @@ export default class Colors extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.nextColor = this.nextColor.bind(this);
     this.previousColor = this.previousColor.bind(this);
+    this.bgColor = this.bgColor.bind(this);
+    this.textColor = this.textColor.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +25,7 @@ export default class Colors extends React.Component {
           this.autoRed = setTimeout(() => {
             this.setState({ playRed: true });
             const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
-          }, 1500);
+          }, 1200);
         }
 
       });
@@ -80,19 +82,54 @@ export default class Colors extends React.Component {
     }
   }
 
+  // Create a center-color-img class using center img values
+  // -- but change width to 19rem for tablet
+
+  // .center-color-img {
+  //   width: 19rem;
+  //   height: 15.625rem;
+  //   margin: 4.5rem 0 1.125rem;
+  // }
+  // -- but change width to 22rem for tablet landscape AND desktop
+  // Replace center-img class in second ternary render to be center-color-img
+  // -- instead of center-img
+
+  // !!!!!
+  // center-img class on tablet has to be set to like 20rem but it messes up the center-img for the text
+
+  bgColor() {
+    if (this.state.colors[this.state.currentIndex].color === 'red') return 'rgba(233, 30, 30, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'orange') return 'rgba(255, 152, 17, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'yellow') return 'rgba(255, 212, 34, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'green') return 'rgba(109, 200, 42, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'blue') return '';
+    if (this.state.colors[this.state.currentIndex].color === 'purple') return 'rgba(171, 109, 208, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'brown') return 'rgba(191, 125, 56, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'pink') return 'rgba(255, 110, 148, 0.8)';
+    if (this.state.colors[this.state.currentIndex].color === 'black') return 'rgba(0, 0, 0, 0.7)';
+    if (this.state.colors[this.state.currentIndex].color === 'white') return 'rgba(255, 255, 255, 0.8)';
+  }
+
+  textColor() {
+    if (this.state.colors[this.state.currentIndex].color === 'black') return 'white';
+    return '';
+  }
+
   render() {
     if (this.state.colors.length === 0) return null;
     const { imageUrl } = this.state.colors[this.state.currentIndex];
     const color = this.state.colors[this.state.currentIndex].color;
     const { imageText } = this.state.colors[this.state.currentIndex];
+    const colorClass = this.bgColor();
+    const textColor = this.textColor();
 
     const displayType = !this.state.wordShowing
-      ? <div className="style">
+      ? <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
         <div className="row">
           <div className="column-third">
             <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
           </div>
-          <div className="center-img">
+          <div className="center-img row">
             <span
               id='image'
               onClick={this.handleClick}>
@@ -107,7 +144,7 @@ export default class Colors extends React.Component {
           <span className='word-text'></span>
         </div>
       </div>
-      : <div className="style">
+      : <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
         <div className="row">
           <div className="column-third">
             <i onClick={this.handleClick} className="fas fa-chevron-left"></i>

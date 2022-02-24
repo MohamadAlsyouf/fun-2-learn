@@ -83,6 +83,7 @@
 
   .music-toggle {
     text-align: end;
+    height: 2.5rem;
   }
 
   .fa-music {
@@ -97,10 +98,21 @@
     margin: 0.625rem;
   }
 
+  .center-img {
+    text-align: center;
+    width: 13rem;
+  }
+
   .center-img > img {
     width: 10.5rem;
     height: 10.5rem;
     margin: 2.125rem 0 0.5rem;
+  }
+
+  .center-img > span {
+    width: 15.625rem;
+    margin: 5.5rem 0 1.125rem;
+    font-size: 4rem;
   }
 }
 
@@ -167,12 +179,6 @@
     margin: 0.625rem 0 0 0.625rem;
   }
 
-  .center-img > img {
-    width: 18.75rem;
-    height: 18.75rem;
-    margin: 3.125rem 0 2rem;
-  }
-
   .style {
     margin: auto;
     background: rgba(67, 173, 244, 0.8);
@@ -190,6 +196,23 @@
   .word-text {
     font-size: 3.5rem;
     font-family: cursive;
+  }
+
+  .center-img > img {
+    width: 18.75rem;
+    height: 18.75rem;
+    margin: 3.125rem 0 2rem;
+  }
+
+  .center-img {
+    width: 21rem;
+    text-align: center;
+  }
+
+  .center-img > span {
+    width: 20rem;
+    margin: 8.5rem 0 1.125rem;
+    font-size: 7rem;
   }
 }
 
@@ -257,12 +280,6 @@
     margin: 1.25rem;
   }
 
-  .center-img > img {
-    width: 21.875rem;
-    height: 21.875rem;
-    margin: 2rem 0 0;
-  }
-
   .style {
     margin: auto;
     background: rgba(67, 173, 244, 0.8);
@@ -280,6 +297,23 @@
   .word-text {
     font-size: 3.5rem;
     font-family: cursive;
+  }
+
+  .center-img {
+    width: 22rem;
+    text-align: center;
+  }
+
+  .center-img > img {
+    width: 21.875rem;
+    height: 21.875rem;
+    margin: 2rem 0 0;
+  }
+
+  .center-img > span {
+    width: 21rem;
+    margin: 9rem 0 1.125rem;
+    font-size: 7rem;
   }
 }
 
@@ -347,12 +381,6 @@
     margin: 0.625rem 0 0 0.625rem;
   }
 
-  .center-img > img {
-    width: 21.875rem;
-    height: 21.875rem;
-    margin: 2.125rem 0 0;
-  }
-
   .style {
     margin: auto;
     background: rgba(67, 173, 244, 0.8);
@@ -365,5 +393,23 @@
 
   .justify-center {
     justify-content: start;
+  }
+
+  .center-img > img {
+    width: 21.875rem;
+    height: 21.875rem;
+    margin: 2.125rem 0 0;
+  }
+
+  .center-img > span {
+    width: 15.625rem;
+    margin: 10rem 0 1.125rem;
+    font-size: 7rem;
+    cursor: pointer;
+  }
+
+  .center-img {
+    width: 20rem;
+    text-align: center;
   }
 }

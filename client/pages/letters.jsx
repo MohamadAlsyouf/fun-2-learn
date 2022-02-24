@@ -24,7 +24,7 @@ export default class Letters extends React.Component {
           this.autoA = setTimeout(() => {
             this.setState({ playA: true });
             const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
-          }, 1500);
+          }, 1300);
         }
       });
     fetch('api/words')

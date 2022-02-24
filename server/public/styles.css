@@ -91,6 +91,13 @@ img {
   margin: 4.5rem 0 1.125rem;
 }
 
+.center-img > span {
+  width: 15.625rem;
+  margin: 9.5rem 0 1.125rem;
+  font-size: 4rem;
+  font-family: cursive;
+}
+
 .word-text {
   font-size: 3.5rem;
   font-family: cursive;
