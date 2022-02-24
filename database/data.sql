@@ -218,13 +218,48 @@ insert into "words" (
   './images/words/zebra.mp3'
 );
 
--- ADD COLOR, IMAGE, AUDIO !!!!!!!!!
-insert into "words" (
-  "word",
+insert into "colors" (
+  "color",
   "imageUrl",
   "audioUrl"
 ) values (
   'red',
-  './images/colors/apple.png',
-  './images/colors/apple.mp3'
+  './images/colors/red.png',
+  './images/colors/red.mp3'
 ), (
+  'orange',
+  './images/colors/orange.png',
+  './images/colors/orange.mp3'
+), (
+  'yellow',
+  './images/colors/yellow.png',
+  './images/colors/yellow.mp3'
+), (
+  'green',
+  './images/colors/green.png',
+  './images/colors/green.mp3'
+), (
+  'blue',
+  './images/colors/blue.png',
+  './images/colors/blue.mp3'
+), (
+  'purple',
+  './images/colors/purple.png',
+  './images/colors/purple.mp3'
+), (
+  'brown',
+  './images/colors/brown.png',
+  './images/colors/brown.mp3'
+), (
+  'pink',
+  './images/colors/pink.png',
+  './images/colors/pink.mp3'
+), (
+  'black',
+  './images/colors/black.png',
+  './images/colors/black.mp3'
+), (
+  'white',
+  './images/colors/white.png',
+  './images/colors/white.mp3'
+);
