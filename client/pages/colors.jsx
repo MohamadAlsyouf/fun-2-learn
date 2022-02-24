@@ -25,7 +25,7 @@ export default class Colors extends React.Component {
             const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
           }, 1500);
         }
-        // console.log(colors);
+
       });
   }
 
