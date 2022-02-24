@@ -82,21 +82,6 @@ export default class Colors extends React.Component {
     }
   }
 
-  // Create a center-color-img class using center img values
-  // -- but change width to 19rem for tablet
-
-  // .center-color-img {
-  //   width: 19rem;
-  //   height: 15.625rem;
-  //   margin: 4.5rem 0 1.125rem;
-  // }
-  // -- but change width to 22rem for tablet landscape AND desktop
-  // Replace center-img class in second ternary render to be center-color-img
-  // -- instead of center-img
-
-  // !!!!!
-  // center-img class on tablet has to be set to like 20rem but it messes up the center-img for the text
-
   bgColor() {
     if (this.state.colors[this.state.currentIndex].color === 'red') return 'rgba(233, 30, 30, 0.8)';
     if (this.state.colors[this.state.currentIndex].color === 'orange') return 'rgba(255, 152, 17, 0.8)';
