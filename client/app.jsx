@@ -4,6 +4,7 @@ import InteractiveBg from './components/background';
 import Navbar from './components/navbar';
 import parseRoute from './lib/parse-route';
 import Letters from './pages/letters';
+import Colors from './pages/colors';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,10 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'letters') {
-      return (<Letters />);
+      return <Letters />;
+    }
+    if (route.path === 'colors') {
+      return <Colors />;
     }
   }
 
