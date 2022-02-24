@@ -47,8 +47,8 @@ export default class Colors extends React.Component {
     }
     if (event.target.id === 'image') {
       this.setState({ wordShowing: true });
-      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
-    } else if (event.target.id === 'word') {
+      const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
+    } else if (event.target.id === 'color') {
       this.setState({ wordShowing: false });
       const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     } else {
@@ -84,6 +84,7 @@ export default class Colors extends React.Component {
     if (this.state.colors.length === 0) return null;
     const { imageUrl } = this.state.colors[this.state.currentIndex];
     const color = this.state.colors[this.state.currentIndex].color;
+    const { imageText } = this.state.colors[this.state.currentIndex];
 
     const displayType = !this.state.wordShowing
       ? <div className="style">
@@ -113,7 +114,7 @@ export default class Colors extends React.Component {
           </div>
           <div className="center-img">
             <img
-              id='word'
+              id='color'
               src={imageUrl}
               onClick={this.handleClick}>
             </img>
@@ -123,7 +124,7 @@ export default class Colors extends React.Component {
           </div>
         </div>
         <div className='col-full text-align'>
-          <span className='word-text'>{color}</span>
+          <span className='word-text'>{imageText}</span>
         </div>
       </div>;
 
