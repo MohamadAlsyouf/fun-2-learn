@@ -217,3 +217,14 @@ insert into "words" (
   './images/words/zebra.png',
   './images/words/zebra.mp3'
 );
+
+-- ADD COLOR, IMAGE, AUDIO !!!!!!!!!
+insert into "words" (
+  "word",
+  "imageUrl",
+  "audioUrl"
+) values (
+  'red',
+  './images/colors/apple.png',
+  './images/colors/apple.mp3'
+), (

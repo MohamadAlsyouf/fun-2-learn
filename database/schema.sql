@@ -22,6 +22,7 @@ CREATE TABLE "public"."letters" (
 CREATE TABLE "public"."colors" (
 	"colorId" serial NOT NULL,
 	"color" TEXT NOT NULL,
+  "imageUrl" TEXT NOT NULL,
 	"audioUrl" TEXT NOT NULL,
 	CONSTRAINT "colors_pk" PRIMARY KEY ("colorId")
 ) WITH (
