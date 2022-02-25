@@ -7,7 +7,7 @@ export default class Colors extends React.Component {
       currentIndex: 0,
       colors: [],
       playRed: false,
-      wordShowing: false
+      colorShowing: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextColor = this.nextColor.bind(this);
@@ -48,13 +48,13 @@ export default class Colors extends React.Component {
       this.previousColor();
     }
     if (event.target.id === 'image') {
-      this.setState({ wordShowing: true });
+      this.setState({ colorShowing: true });
       const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
     } else if (event.target.id === 'color') {
-      this.setState({ wordShowing: false });
+      this.setState({ colorShowing: false });
       const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     } else {
-      this.setState({ wordShowing: false });
+      this.setState({ colorShowing: false });
     }
   }
 
@@ -107,53 +107,35 @@ export default class Colors extends React.Component {
     const { imageText } = this.state.colors[this.state.currentIndex];
     const colorClass = this.bgColor();
     const textColor = this.textColor();
-
-    const displayType = !this.state.wordShowing
-      ? <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
-        <div className="row">
-          <div className="column-third">
-            <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-          </div>
-          <div className="center-img row">
-            <span
-              id='image'
-              onClick={this.handleClick}>
-                {color}
-            </span>
-          </div>
-          <div className="column-third">
-            <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-          </div>
-        </div>
-        <div className='col-full text-align'>
-          <span className='word-text'></span>
-        </div>
-      </div>
-      : <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
-        <div className="row">
-          <div className="column-third">
-            <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-          </div>
-          <div className="center-img">
-            <img
-              id='color'
-              src={imageUrl}
-              onClick={this.handleClick}>
-            </img>
-          </div>
-          <div className="column-third">
-            <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-          </div>
-        </div>
-        <div className='col-full text-align'>
-          <span className='word-text'>{imageText}</span>
-        </div>
-      </div>;
+    let display;
+    let showImageText;
+    if (!this.state.colorShowing) {
+      display = <span id='image' onClick={this.handleClick}>{color}</span>;
+      showImageText = <span className='word-text'></span>;
+    } else if (this.state.colorShowing) {
+      display = <img id='color' src={imageUrl} onClick={this.handleClick}></img>;
+      showImageText = <span className='word-text'>{imageText}</span>;
+    }
 
     return (
       <>
       <div className="container">
-        {displayType}
+          <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
+            <div className="row">
+              <div className="column-third">
+                <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
+              </div>
+              <div className="center-img row">
+                {display}
+              </div>
+              <div className="column-third">
+                <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
+              </div>
+            </div>
+            <div className='col-full text-align'>
+              {showImageText}
+            </div>
+          </div>
       </div>
       </>
     );
