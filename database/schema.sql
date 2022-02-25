@@ -19,11 +19,11 @@ CREATE TABLE "public"."letters" (
 
 
 
-CREATE TABLE "public"."colors" (
-	"colorId" serial NOT NULL,
-	"color" TEXT NOT NULL,
-	"audioUrl" TEXT NOT NULL,
-	CONSTRAINT "colors_pk" PRIMARY KEY ("colorId")
+CREATE TABLE "public"."words" (
+	"letterId" serial NOT NULL,
+	"word" TEXT NOT NULL,
+	"imageUrl" TEXT NOT NULL,
+	"audioUrl" TEXT NOT NULL
 ) WITH (
   OIDS=FALSE
 );
@@ -42,16 +42,18 @@ CREATE TABLE "public"."numbers" (
 
 
 
-CREATE TABLE "public"."words" (
-	"letterId" serial NOT NULL,
-	"word" TEXT NOT NULL,
+CREATE TABLE "public"."colors" (
+	"colorId" serial NOT NULL,
+	"color" TEXT NOT NULL,
+	"class" TEXT NOT NULL,
+	"colorAudioUrl" TEXT NOT NULL,
+	"imageText" TEXT NOT NULL,
 	"imageUrl" TEXT NOT NULL,
-	"audioUrl" TEXT NOT NULL
+	"imageAudioUrl" TEXT NOT NULL,
+	CONSTRAINT "colors_pk" PRIMARY KEY ("colorId")
 ) WITH (
   OIDS=FALSE
 );
-
-
 
 
 

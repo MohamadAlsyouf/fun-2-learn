@@ -24,7 +24,7 @@ export default class Letters extends React.Component {
           this.autoA = setTimeout(() => {
             this.setState({ playA: true });
             const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
-          }, 1500);
+          }, 1300);
         }
       });
     fetch('api/words')
@@ -91,52 +91,34 @@ export default class Letters extends React.Component {
     const { imageUrl } = this.state.letters[this.state.currentIndex];
     const wordImage = this.state.words[this.state.currentIndex].imageUrl;
     const word = this.state.words[this.state.currentIndex].word;
-
-    const displayType = !this.state.wordShowing
-      ? <div className="style">
-          <div className="row">
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-            </div>
-            <div className="center-img">
-              <img
-                id='letter'
-                src={imageUrl}
-                onClick={this.handleClick}>
-              </img>
-            </div>
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-            </div>
-          </div>
-          <div className='col-full text-align'>
-            <span className='word-text'></span>
-          </div>
-        </div>
-      : <div className="style">
-          <div className="row">
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-            </div>
-            <div className="center-img">
-              <img
-                id='word'
-                src={wordImage}
-                onClick={this.handleClick}>
-              </img>
-            </div>
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-            </div>
-          </div>
-          <div className='col-full text-align'>
-            <span className='word-text'>{word}</span>
-          </div>
-        </div>;
+    let display;
+    let showImageText;
+    if (!this.state.wordShowing) {
+      display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
+      showImageText = <span className='word-text'></span>;
+    } else if (this.state.wordShowing) {
+      display = <img id='word' src={wordImage} onClick={this.handleClick}></img>;
+      showImageText = <span className='word-text'>{word}</span>;
+    }
 
     return (
          <div className="container">
-          {displayType}
+        <div className="style">
+          <div className="row">
+            <div className="column-third">
+              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
+            </div>
+            <div className="center-img">
+              {display}
+            </div>
+            <div className="column-third">
+              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
+            </div>
+          </div>
+          <div className='col-full text-align'>
+            {showImageText}
+          </div>
+        </div>
         </div>
     );
   }

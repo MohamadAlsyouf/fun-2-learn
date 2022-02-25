@@ -217,3 +217,82 @@ insert into "words" (
   './images/words/zebra.png',
   './images/words/zebra.mp3'
 );
+
+insert into "colors" (
+  "color",
+  "class",
+  "colorAudioUrl",
+  "imageText",
+  "imageUrl",
+  "imageAudioUrl"
+) values (
+  'red',
+  'red',
+  './images/colors/red.mp3',
+  'strawberry',
+  './images/colors/red.png',
+  './images/colors/strawberry.mp3'
+), (
+  'orange',
+  'orange',
+  './images/colors/orange.mp3',
+  'orange',
+  './images/colors/orange.png',
+  './images/colors/orange.mp3'
+), (
+  'yellow',
+  'yellow',
+  './images/colors/yellow.mp3',
+  'lemon',
+  './images/colors/yellow.png',
+  './images/colors/lemon.mp3'
+), (
+  'green',
+  'green',
+  './images/colors/green.mp3',
+  'apple',
+  './images/colors/green.png',
+  './images/words/apple.mp3'
+), (
+  'blue',
+  'blue',
+  './images/colors/blue.mp3',
+  'blueberry',
+  './images/colors/blue.png',
+  './images/colors/blueberry.mp3'
+), (
+  'purple',
+  'purple',
+  './images/colors/purple.mp3',
+  'grapes',
+  './images/colors/purple.png',
+  './images/colors/grapes.mp3'
+), (
+  'brown',
+  'brown',
+  './images/colors/brown.mp3',
+  'potato',
+  './images/colors/brown.png',
+  './images/colors/potato.mp3'
+), (
+  'pink',
+  'pink',
+  './images/colors/pink.mp3',
+  'donut',
+  './images/colors/pink.png',
+  './images/colors/donut.mp3'
+), (
+  'black',
+  'black',
+  './images/colors/black.mp3',
+  'cat',
+  './images/colors/black.png',
+  './images/words/cat.mp3'
+), (
+  'white',
+  'white',
+  './images/colors/white.mp3',
+  'ice cream',
+  './images/colors/white.png',
+  './images/words/ice-cream.mp3'
+);
