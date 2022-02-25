@@ -58,6 +58,12 @@
     height: 3rem;
   }
 
+  .penguin {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.625rem 0 1rem 0.625rem;
+  }
+
   .topics {
     flex-direction: row;
     justify-content: space-between;
@@ -101,6 +107,8 @@
   .center-img {
     text-align: center;
     width: 11rem;
+    display: flex;
+    justify-content: center;
   }
 
   .center-img > img {
@@ -111,7 +119,7 @@
 
   .center-img > span {
     width: 15.625rem;
-    margin: 5.5rem 0 1.125rem;
+    margin: 6rem 0 1.125rem;
     font-size: 4rem;
   }
 }
@@ -164,7 +172,7 @@
 
   .logo {
     color: white;
-    font-family: cursive;
+    font-family: Jua, sans-serif;
     align-items: center;
     margin: 0;
     padding-top: 0.625rem;
@@ -176,7 +184,7 @@
   .penguin {
     width: 2.5rem;
     height: 2.5rem;
-    margin: 0.625rem 0 0 0.625rem;
+    margin: 0.625rem 0 1rem 0.625rem;
   }
 
   .style {
@@ -195,7 +203,7 @@
 
   .word-text {
     font-size: 3.5rem;
-    font-family: cursive;
+    font-family: Jua, sans-serif;
   }
 
   .center-img > img {
@@ -207,11 +215,13 @@
   .center-img {
     width: 21rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .center-img > span {
     width: 20rem;
-    margin: 8.5rem 0 1.125rem;
+    margin: 9.5rem 0 1.125rem;
     font-size: 7rem;
   }
 }
@@ -225,7 +235,7 @@
 
   .logo {
     color: white;
-    font-family: cursive;
+    font-family: Jua, sans-serif;
     font-size: xx-large;
     align-items: center;
     margin: 0;
@@ -238,7 +248,7 @@
   .penguin {
     width: 2.5rem;
     height: 2.5rem;
-    margin: 0.625rem 0 0 0.625rem;
+    margin: 0.625rem 0 1rem 0.625rem;
   }
 
   .container {
@@ -296,12 +306,14 @@
 
   .word-text {
     font-size: 3.5rem;
-    font-family: cursive;
+    font-family: Jua, sans-serif;
   }
 
   .center-img {
     width: 22rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .center-img > img {
@@ -312,7 +324,7 @@
 
   .center-img > span {
     width: 21rem;
-    margin: 9rem 0 1.125rem;
+    margin: 10rem 0 1.125rem;
     font-size: 7rem;
   }
 }
@@ -365,7 +377,7 @@
 
   .logo {
     color: white;
-    font-family: cursive;
+    font-family: Jua, sans-serif;
     font-size: xx-large;
     align-items: center;
     margin: 0;
@@ -378,7 +390,7 @@
   .penguin {
     width: 2.5rem;
     height: 2.5rem;
-    margin: 0.625rem 0 0 0.625rem;
+    margin: 0.625rem 0 1rem 0.625rem;
   }
 
   .style {
@@ -403,13 +415,22 @@
 
   .center-img > span {
     width: 15.625rem;
-    margin: 10rem 0 1.125rem;
+    margin: 11rem 0 1.125rem;
     font-size: 7rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
   }
 
   .center-img {
     width: 20rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .word-text {
+    font-size: 4.5rem;
+    font-family: Jua, sans-serif;
   }
 }

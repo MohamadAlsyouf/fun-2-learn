@@ -39,7 +39,7 @@ img {
 
 .logo {
   color: white;
-  font-family: cursive;
+  font-family: Jua, sans-serif;
   font-size: x-large;
   align-items: center;
   margin: 0;
@@ -50,9 +50,9 @@ img {
 }
 
 .penguin {
-  width: 1.875rem;
-  height: 1.875rem;
-  margin: 0.625rem 0 0 0.625rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.625rem 0 1rem 0.625rem;
 }
 
 /* CAROUSEL CSS */
@@ -95,10 +95,10 @@ img {
   width: 15.625rem;
   margin: 9.5rem 0 1.125rem;
   font-size: 4rem;
-  font-family: cursive;
+  font-family: Jua, sans-serif;
 }
 
 .word-text {
   font-size: 3.5rem;
-  font-family: cursive;
+  font-family: Jua, sans-serif;
 }
