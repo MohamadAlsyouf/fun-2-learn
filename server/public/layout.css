@@ -36,7 +36,7 @@
 
 .topic-img {
   cursor: pointer;
-  width: 14.375rem;
+  width: 16.375rem;
   height: 11.563rem;
   margin-bottom: 1.875rem;
 }
@@ -84,7 +84,7 @@
     border: 5px solid black;
     border-radius: 3%;
     width: 30rem;
-    height: 19rem;
+    height: 17rem;
   }
 
   .music-toggle {
@@ -113,7 +113,7 @@
 
   .center-img > img {
     width: 10.5rem;
-    height: 10.5rem;
+    height: 9.5rem;
     margin: 2.125rem 0 0.5rem;
   }
 
@@ -141,7 +141,7 @@
   }
 
   .topics {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     height: 75vh;
     align-items: center;
@@ -149,8 +149,8 @@
 
   .topic-img {
     cursor: pointer;
-    width: 13.75rem;
-    height: 13.75rem;
+    width: 17.75rem;
+    height: 15.75rem;
   }
 
   .music-toggle {
