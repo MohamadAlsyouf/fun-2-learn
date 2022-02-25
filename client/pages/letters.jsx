@@ -93,6 +93,7 @@ export default class Letters extends React.Component {
     const word = this.state.words[this.state.currentIndex].word;
     let display;
     let showImageText;
+
     if (!this.state.wordShowing) {
       display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
       showImageText = <span className='word-text'></span>;
