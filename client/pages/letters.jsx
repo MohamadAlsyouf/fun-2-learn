@@ -13,6 +13,7 @@ export default class Letters extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.nextLetter = this.nextLetter.bind(this);
     this.previousLetter = this.previousLetter.bind(this);
+    this.handlePress = this.handlePress.bind(this);
   }
 
   componentDidMount() {
@@ -32,10 +33,12 @@ export default class Letters extends React.Component {
       .then(words => {
         this.setState({ words });
       });
+    window.addEventListener('keydown', this.handlePress);
   }
 
   componentWillUnmount() {
     clearTimeout(this.autoA);
+    window.removeEventListener('keydown', this.handlePress);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -58,6 +61,26 @@ export default class Letters extends React.Component {
       const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
     } else {
       this.setState({ wordShowing: false });
+    }
+  }
+
+  handlePress() {
+    const { wordShowing } = this.state;
+    if (event.key === 'ArrowRight') {
+      this.nextLetter();
+      this.setState({ wordShowing: false });
+    } else if (event.key === 'ArrowLeft') {
+      this.previousLetter();
+      this.setState({ wordShowing: false });
+    }
+
+    if (event.key === ' ') {
+      this.setState({ wordShowing: !wordShowing });
+      if (!wordShowing) {
+        const audio = new Audio(this.state.words[this.state.currentIndex].audioUrl); audio.play();
+      } else if (wordShowing) {
+        const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
+      }
     }
   }
 
@@ -93,6 +116,7 @@ export default class Letters extends React.Component {
     const word = this.state.words[this.state.currentIndex].word;
     let display;
     let showImageText;
+
     if (!this.state.wordShowing) {
       display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
       showImageText = <span className='word-text'></span>;

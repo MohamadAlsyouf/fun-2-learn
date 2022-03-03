@@ -296,3 +296,49 @@ insert into "colors" (
   './images/colors/white.png',
   './images/words/ice-cream.mp3'
 );
+
+insert into "numbers" (
+  "number",
+  "imageUrl",
+  "audioUrl"
+) values (
+  'one',
+  '',
+  ''
+), (
+  'two',
+  '',
+  ''
+), (
+  'three',
+  '',
+  ''
+), (
+  'four',
+  '',
+  ''
+), (
+  'five',
+  '',
+  ''
+), (
+  'six',
+  '',
+  ''
+), (
+  'seven',
+  '',
+  ''
+), (
+  'eight',
+  '',
+  ''
+), (
+  'nine',
+  '',
+  ''
+), (
+  'ten',
+  '',
+  ''
+);

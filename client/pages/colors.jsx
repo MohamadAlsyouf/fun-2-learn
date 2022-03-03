@@ -7,13 +7,14 @@ export default class Colors extends React.Component {
       currentIndex: 0,
       colors: [],
       playRed: false,
-      colorShowing: false
+      imageShowing: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextColor = this.nextColor.bind(this);
     this.previousColor = this.previousColor.bind(this);
     this.bgColor = this.bgColor.bind(this);
     this.textColor = this.textColor.bind(this);
+    this.handlePress = this.handlePress.bind(this);
   }
 
   componentDidMount() {
@@ -27,12 +28,13 @@ export default class Colors extends React.Component {
             const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
           }, 1200);
         }
-
       });
+    window.addEventListener('keydown', this.handlePress);
   }
 
   componentWillUnmount() {
     clearTimeout(this.autoRed);
+    window.removeEventListener('keydown', this.handlePress);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -47,14 +49,35 @@ export default class Colors extends React.Component {
     } else if (event.target.className === 'fas fa-chevron-left') {
       this.previousColor();
     }
+
     if (event.target.id === 'image') {
-      this.setState({ colorShowing: true });
+      this.setState({ imageShowing: true });
       const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
     } else if (event.target.id === 'color') {
-      this.setState({ colorShowing: false });
+      this.setState({ imageShowing: false });
       const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
     } else {
-      this.setState({ colorShowing: false });
+      this.setState({ imageShowing: false });
+    }
+  }
+
+  handlePress() {
+    const { imageShowing } = this.state;
+    if (event.key === 'ArrowRight') {
+      this.nextColor();
+      this.setState({ imageShowing: false });
+    } else if (event.key === 'ArrowLeft') {
+      this.previousColor();
+      this.setState({ imageShowing: false });
+    }
+
+    if (event.key === ' ') {
+      this.setState({ imageShowing: !imageShowing });
+      if (!imageShowing) {
+        const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
+      } else if (imageShowing) {
+        const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
+      }
     }
   }
 
@@ -109,10 +132,11 @@ export default class Colors extends React.Component {
     const textColor = this.textColor();
     let display;
     let showImageText;
-    if (!this.state.colorShowing) {
+
+    if (!this.state.imageShowing) {
       display = <span id='image' onClick={this.handleClick}>{color}</span>;
       showImageText = <span className='word-text'></span>;
-    } else if (this.state.colorShowing) {
+    } else if (this.state.imageShowing) {
       display = <img id='color' src={imageUrl} onClick={this.handleClick}></img>;
       showImageText = <span className='word-text'>{imageText}</span>;
     }
