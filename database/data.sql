@@ -285,9 +285,9 @@ insert into "colors" (
   'black',
   'black',
   './images/colors/black.mp3',
-  'cat',
+  'blackberry',
   './images/colors/black.png',
-  './images/words/cat.mp3'
+  './images/colors/blackberry.mp3'
 ), (
   'white',
   'white',
