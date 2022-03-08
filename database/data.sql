@@ -302,43 +302,47 @@ insert into "numbers" (
   "imageUrl",
   "audioUrl"
 ) values (
+  'zero',
+  './images/numbers/zero.png',
+  './images/numbers/zero.mp3'
+), (
   'one',
-  '',
-  ''
+  './images/numbers/one.png',
+  './images/numbers/one.mp3'
 ), (
   'two',
-  '',
-  ''
+  './images/numbers/two.png',
+  './images/numbers/two.mp3'
 ), (
   'three',
-  '',
-  ''
+  './images/numbers/three.png',
+  './images/numbers/three.mp3'
 ), (
   'four',
-  '',
-  ''
+  './images/numbers/four.png',
+  './images/numbers/four.mp3'
 ), (
   'five',
-  '',
-  ''
+  './images/numbers/five.png',
+  './images/numbers/five.mp3'
 ), (
   'six',
-  '',
-  ''
+  './images/numbers/six.png',
+  './images/numbers/six.mp3'
 ), (
   'seven',
-  '',
-  ''
+  './images/numbers/seven.png',
+  './images/numbers/seven.mp3'
 ), (
   'eight',
-  '',
-  ''
+  './images/numbers/eight.png',
+  './images/numbers/eight.mp3'
 ), (
   'nine',
-  '',
-  ''
+  './images/numbers/nine.png',
+  './images/numbers/nine.mp3'
 ), (
   'ten',
-  '',
-  ''
+  './images/numbers/ten.png',
+  './images/numbers/ten.mp3'
 );
