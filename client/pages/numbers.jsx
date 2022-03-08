@@ -15,6 +15,12 @@ export default class Numbers extends React.Component {
       .then(res => res.json())
       .then(numbers => {
         this.setState({ numbers });
+        if (this.state.playZero === false) {
+          this.auto0 = setTimeout(() => {
+            this.setState({ playZero: true });
+            const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
+          }, 1300);
+        }
       });
   }
 
