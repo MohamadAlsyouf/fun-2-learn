@@ -10,6 +10,14 @@ export default class Numbers extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('api/numbers')
+      .then(res => res.json())
+      .then(numbers => {
+        this.setState({ numbers });
+      });
+  }
+
   render() {
     return (
       <div className="container">
