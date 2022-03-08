@@ -5,6 +5,7 @@ import Navbar from './components/navbar';
 import parseRoute from './lib/parse-route';
 import Letters from './pages/letters';
 import Colors from './pages/colors';
+import Numbers from './pages/numbers';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +31,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'colors') {
       return <Colors />;
+    }
+    if (route.path === 'numbers') {
+      return <Numbers />;
     }
   }
 
