@@ -12,8 +12,24 @@ export default class Numbers extends React.Component {
 
   render() {
     return (
-      <>
-      </>
+      <div className="container">
+        <div className="style">
+          <div className="row">
+            <div className="column-third">
+              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
+            </div>
+            <div className="center-img">
+              {/* {display} */}
+            </div>
+            <div className="column-third">
+              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
+            </div>
+          </div>
+          <div className='col-full text-align'>
+            {/* {showImageText} */}
+          </div>
+        </div>
+      </div>
     );
   }
 }
