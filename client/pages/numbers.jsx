@@ -22,6 +22,12 @@ export default class Numbers extends React.Component {
           }, 1300);
         }
       });
+    window.addEventListener('keydown', this.handlePress);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.autoA);
+    window.removeEventListener('keydown', this.handlePress);
   }
 
   render() {
