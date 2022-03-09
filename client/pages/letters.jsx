@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowLoader from '../components/loader';
 
 export default class Letters extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class Letters extends React.Component {
       letters: [],
       words: [],
       playA: false,
-      wordShowing: false
+      wordShowing: false,
+      isLoading: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextLetter = this.nextLetter.bind(this);
@@ -20,7 +22,7 @@ export default class Letters extends React.Component {
     fetch('api/letters')
       .then(res => res.json())
       .then(letters => {
-        this.setState({ letters });
+        this.setState({ letters, isLoading: false });
         if (this.state.playA === false) {
           this.autoA = setTimeout(() => {
             this.setState({ playA: true });
@@ -31,7 +33,7 @@ export default class Letters extends React.Component {
     fetch('api/words')
       .then(res => res.json())
       .then(words => {
-        this.setState({ words });
+        this.setState({ words, isLoading: false });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -109,6 +111,8 @@ export default class Letters extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) return <ShowLoader />;
+
     if (this.state.letters.length === 0) return null;
     if (this.state.words.length === 0) return null;
     const { imageUrl } = this.state.letters[this.state.currentIndex];
@@ -126,7 +130,7 @@ export default class Letters extends React.Component {
     }
 
     return (
-         <div className="container">
+      <div className="container">
         <div className="style">
           <div className="row">
             <div className="column-third">
@@ -143,7 +147,7 @@ export default class Letters extends React.Component {
             {showImageText}
           </div>
         </div>
-        </div>
+      </div>
     );
   }
 }

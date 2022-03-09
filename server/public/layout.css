@@ -28,6 +28,14 @@
   text-align: end;
 }
 
+.spinner {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 6rem;
+  margin-left: 2rem;
+}
+
 .topics {
   flex-direction: column;
   justify-content: space-between;
@@ -121,6 +129,14 @@
     width: 15.625rem;
     margin: 6rem 0 1.125rem;
     font-size: 4rem;
+  }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3rem;
+    margin-left: 2rem;
   }
 }
 
@@ -327,6 +343,14 @@
     margin: 10rem 0 1.125rem;
     font-size: 7rem;
   }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
 }
 
 /* DESKTOP */
@@ -432,5 +456,13 @@
   .word-text {
     font-size: 4.5rem;
     font-family: Jua, sans-serif;
+  }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5rem;
+    margin-left: 2rem;
   }
 }
