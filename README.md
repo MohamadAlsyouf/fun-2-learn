@@ -34,16 +34,26 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 ### Getting Started
 
 1. Clone the repository.
+  git clone git@github.com:edtan094/nomnom.git
+  cd fun-2-learn
+  
+2. Install all dependencies with NPM.
+npm install
 
-    ```shell
-    git clone git@github.com:MohamadAlsyouf/Viberr.git
-    cd Viberr
-    ```
+3. Make a copy of the .env.example file.
+cp .env.example .env
 
-1. Install all dependencies with NPM.
+4. Start postgreSQL
+sudo service postgresql start
 
-    ```shell
-    npm install
-    ```
-    
-1. Start the project. Once started you can view the application by opening your index.html file with default browser.
+5. Create a new database
+createdb fun2learn
+
+6. Import the example database to postgreSQL
+npm run db:import
+
+7. View the database (optional - if pgweb is installed)
+pgweb --db=fun2learn
+
+8. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser
+npm run dev
