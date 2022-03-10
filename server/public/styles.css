@@ -148,4 +148,5 @@ img {
   margin-top: 7.25rem !important;
   font-size: 2.5rem !important;
   white-space: pre-wrap;
+  display: flex;
 }
