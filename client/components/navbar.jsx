@@ -5,7 +5,6 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <>
-      {/* refactor down the line */}
         <header className='navbar'>
           <div className='container'>
               <div className='col-full row align-center'>
