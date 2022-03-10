@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowLoader from '../components/loader';
 
 export default class Numbers extends React.Component {
   constructor(props) {
@@ -6,7 +7,8 @@ export default class Numbers extends React.Component {
     this.state = {
       currentIndex: 0,
       numbers: [],
-      playZero: false
+      playZero: false,
+      isLoading: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextNumber = this.nextNumber.bind(this);
@@ -18,7 +20,7 @@ export default class Numbers extends React.Component {
     fetch('api/numbers')
       .then(res => res.json())
       .then(numbers => {
-        this.setState({ numbers });
+        this.setState({ numbers, isLoading: false });
         if (this.state.playZero === false) {
           this.autoZero = setTimeout(() => {
             this.setState({ playZero: true });
@@ -81,6 +83,8 @@ export default class Numbers extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) return <ShowLoader />;
+
     if (this.state.numbers.length === 0) return null;
     const { imageUrl } = this.state.numbers[this.state.currentIndex];
     const number = this.state.numbers[this.state.currentIndex].number;

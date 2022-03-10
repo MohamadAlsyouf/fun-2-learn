@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowLoader from '../components/loader';
 
 export default class Colors extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ export default class Colors extends React.Component {
       currentIndex: 0,
       colors: [],
       playRed: false,
-      imageShowing: false
+      imageShowing: false,
+      isLoading: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextColor = this.nextColor.bind(this);
@@ -21,7 +23,7 @@ export default class Colors extends React.Component {
     fetch('api/colors')
       .then(res => res.json())
       .then(colors => {
-        this.setState({ colors });
+        this.setState({ colors, isLoading: false });
         if (this.state.playRed === false) {
           this.autoRed = setTimeout(() => {
             this.setState({ playRed: true });
@@ -124,6 +126,8 @@ export default class Colors extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) return <ShowLoader />;
+
     if (this.state.colors.length === 0) return null;
     const { imageUrl } = this.state.colors[this.state.currentIndex];
     const color = this.state.colors[this.state.currentIndex].color;
