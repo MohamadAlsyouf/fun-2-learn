@@ -8,7 +8,8 @@ export default class Numbers extends React.Component {
       currentIndex: 0,
       numbers: [],
       playZero: false,
-      isLoading: true
+      isLoading: true,
+      error: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextNumber = this.nextNumber.bind(this);
@@ -27,6 +28,10 @@ export default class Numbers extends React.Component {
             const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
           }, 1300);
         }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ error: true });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -88,6 +93,19 @@ export default class Numbers extends React.Component {
     if (this.state.numbers.length === 0) return null;
     const { imageUrl } = this.state.numbers[this.state.currentIndex];
     const number = this.state.numbers[this.state.currentIndex].number;
+    let display;
+    let numSpelling;
+
+    if (this.state.error) {
+      display =
+        <span className='network-err'>
+          Oops! There was an error connecting to the network!
+        </span>;
+      numSpelling = <span className='word-text'></span>;
+    } else {
+      display = <img id="image" src={imageUrl} onClick={this.handleClick}></img>;
+      numSpelling = <span className='word-text'>{number}</span>;
+    }
 
     return (
       <div className="container">
@@ -97,14 +115,14 @@ export default class Numbers extends React.Component {
               <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
             </div>
             <div className="center-img">
-              <img id="image" src={imageUrl} onClick={this.handleClick}></img>
+              {display}
             </div>
             <div className="column-third">
               <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
             </div>
           </div>
           <div className='col-full text-align'>
-            <span className='word-text'>{number}</span>;
+            {numSpelling}
           </div>
         </div>
       </div>

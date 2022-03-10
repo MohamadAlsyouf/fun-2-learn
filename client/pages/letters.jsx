@@ -10,7 +10,8 @@ export default class Letters extends React.Component {
       words: [],
       playA: false,
       wordShowing: false,
-      isLoading: true
+      isLoading: true,
+      error: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextLetter = this.nextLetter.bind(this);
@@ -29,11 +30,19 @@ export default class Letters extends React.Component {
             const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
           }, 1300);
         }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ error: true });
       });
     fetch('api/words')
       .then(res => res.json())
       .then(words => {
         this.setState({ words, isLoading: false });
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ error: true });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -121,7 +130,12 @@ export default class Letters extends React.Component {
     let display;
     let showImageText;
 
-    if (!this.state.wordShowing) {
+    if (this.state.error) {
+      display =
+        <span className='network-err'>
+          Oops! There was an error connecting to the network!
+        </span>;
+    } else if (!this.state.wordShowing) {
       display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
       showImageText = <span className='word-text'></span>;
     } else if (this.state.wordShowing) {

@@ -138,6 +138,13 @@
     margin-top: 3rem;
     margin-left: 2rem;
   }
+
+  .network-err {
+    color: black;
+    margin-top: 5.25rem !important;
+    font-size: 1.5rem !important;
+    white-space: pre-wrap;
+  }
 }
 
 /* TABLET MEDIA QUERY */
@@ -239,6 +246,13 @@
     width: 20rem;
     margin: 9.5rem 0 1.125rem;
     font-size: 7rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
   }
 }
 
@@ -350,6 +364,13 @@
     height: 100%;
     margin-top: 5rem;
     margin-left: 2rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
   }
 }
 
@@ -464,5 +485,12 @@
     height: 100%;
     margin-top: 5rem;
     margin-left: 2rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
   }
 }

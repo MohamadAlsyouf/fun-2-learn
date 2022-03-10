@@ -9,7 +9,8 @@ export default class Colors extends React.Component {
       colors: [],
       playRed: false,
       imageShowing: false,
-      isLoading: true
+      isLoading: true,
+      error: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextColor = this.nextColor.bind(this);
@@ -30,6 +31,10 @@ export default class Colors extends React.Component {
             const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
           }, 1200);
         }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ error: true });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -137,7 +142,12 @@ export default class Colors extends React.Component {
     let display;
     let showImageText;
 
-    if (!this.state.imageShowing) {
+    if (this.state.error) {
+      display =
+        <span className='network-err'>
+          Oops! There was an error connecting to the network!
+        </span>;
+    } else if (!this.state.imageShowing) {
       display = <span id='image' onClick={this.handleClick}>{color}</span>;
       showImageText = <span className='word-text'></span>;
     } else if (this.state.imageShowing) {
