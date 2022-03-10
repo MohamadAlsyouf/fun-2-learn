@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowLoader from '../components/loader';
+import ShowError from '../components/error';
 
 export default class Colors extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class Colors extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState({ error: true });
+        this.setState({ error: true, isLoading: false });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -132,7 +133,7 @@ export default class Colors extends React.Component {
 
   render() {
     if (this.state.isLoading) return <ShowLoader />;
-
+    if (this.state.error) return <ShowError />;
     if (this.state.colors.length === 0) return null;
     const { imageUrl } = this.state.colors[this.state.currentIndex];
     const color = this.state.colors[this.state.currentIndex].color;
@@ -142,12 +143,7 @@ export default class Colors extends React.Component {
     let display;
     let showImageText;
 
-    if (this.state.error) {
-      display =
-        <span className='network-err'>
-          Oops! There was an error connecting to the network!
-        </span>;
-    } else if (!this.state.imageShowing) {
+    if (!this.state.imageShowing) {
       display = <span id='image' onClick={this.handleClick}>{color}</span>;
       showImageText = <span className='word-text'></span>;
     } else if (this.state.imageShowing) {

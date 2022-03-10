@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowLoader from '../components/loader';
+import ShowError from '../components/error';
 
 export default class Letters extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class Letters extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState({ error: true });
+        this.setState({ error: true, isLoading: false });
       });
     fetch('api/words')
       .then(res => res.json())
@@ -42,7 +43,7 @@ export default class Letters extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState({ error: true });
+        this.setState({ error: true, isLoading: false });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -121,7 +122,7 @@ export default class Letters extends React.Component {
 
   render() {
     if (this.state.isLoading) return <ShowLoader />;
-
+    if (this.state.error) return <ShowError />;
     if (this.state.letters.length === 0) return null;
     if (this.state.words.length === 0) return null;
     const { imageUrl } = this.state.letters[this.state.currentIndex];
@@ -130,12 +131,7 @@ export default class Letters extends React.Component {
     let display;
     let showImageText;
 
-    if (this.state.error) {
-      display =
-        <span className='network-err'>
-          Oops! There was an error connecting to the network!
-        </span>;
-    } else if (!this.state.wordShowing) {
+    if (!this.state.wordShowing) {
       display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
       showImageText = <span className='word-text'></span>;
     } else if (this.state.wordShowing) {

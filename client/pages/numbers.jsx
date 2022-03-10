@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowLoader from '../components/loader';
+import ShowError from '../components/error';
 
 export default class Numbers extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Numbers extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState({ error: true });
+        this.setState({ error: true, isLoading: false });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -89,23 +90,10 @@ export default class Numbers extends React.Component {
 
   render() {
     if (this.state.isLoading) return <ShowLoader />;
-
+    if (this.state.error) return <ShowError />;
     if (this.state.numbers.length === 0) return null;
     const { imageUrl } = this.state.numbers[this.state.currentIndex];
     const number = this.state.numbers[this.state.currentIndex].number;
-    let display;
-    let numSpelling;
-
-    if (this.state.error) {
-      display =
-        <span className='network-err'>
-          Oops! There was an error connecting to the network!
-        </span>;
-      numSpelling = <span className='word-text'></span>;
-    } else {
-      display = <img id="image" src={imageUrl} onClick={this.handleClick}></img>;
-      numSpelling = <span className='word-text'>{number}</span>;
-    }
 
     return (
       <div className="container">
@@ -115,14 +103,14 @@ export default class Numbers extends React.Component {
               <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
             </div>
             <div className="center-img">
-              {display}
+              <img id="image" src={imageUrl} onClick={this.handleClick}></img>;
             </div>
             <div className="column-third">
               <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
             </div>
           </div>
           <div className='col-full text-align'>
-            {numSpelling}
+            <span className='word-text'>{number}</span>;
           </div>
         </div>
       </div>
