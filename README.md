@@ -1,20 +1,21 @@
 # Fun 2 Learn
 
-A
+A full stack web application for children who want to learn the alphabet, words, colors, and numbers.
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
 - React
+- PostgreSQL
 - Node.js
 - Express.js
 - Babel
 - Webpack
-- PostgreSQL
 - Dotenv
 - Node-Fetch
+- HTML5
+- CSS3
+- JavaScript
+- Heroku
 
 ## Live Demo
 
