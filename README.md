@@ -4,9 +4,17 @@ A
 
 ## Technologies Used
 
-- JavaScript
 - HTML5
 - CSS3
+- JavaScript
+- React
+- Node.js
+- Express.js
+- Babel
+- Webpack
+- PostgreSQL
+- Dotenv
+- Node-Fetch
 
 ## Live Demo
 
