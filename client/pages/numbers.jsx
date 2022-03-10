@@ -1,4 +1,6 @@
 import React from 'react';
+import ShowLoader from '../components/loader';
+import ShowError from '../components/error';
 
 export default class Numbers extends React.Component {
   constructor(props) {
@@ -6,7 +8,9 @@ export default class Numbers extends React.Component {
     this.state = {
       currentIndex: 0,
       numbers: [],
-      playZero: false
+      playZero: false,
+      isLoading: true,
+      error: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.nextNumber = this.nextNumber.bind(this);
@@ -18,13 +22,17 @@ export default class Numbers extends React.Component {
     fetch('api/numbers')
       .then(res => res.json())
       .then(numbers => {
-        this.setState({ numbers });
+        this.setState({ numbers, isLoading: false });
         if (this.state.playZero === false) {
           this.autoZero = setTimeout(() => {
             this.setState({ playZero: true });
             const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
           }, 1300);
         }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ error: true, isLoading: false });
       });
     window.addEventListener('keydown', this.handlePress);
   }
@@ -81,6 +89,8 @@ export default class Numbers extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) return <ShowLoader />;
+    if (this.state.error) return <ShowError />;
     if (this.state.numbers.length === 0) return null;
     const { imageUrl } = this.state.numbers[this.state.currentIndex];
     const number = this.state.numbers[this.state.currentIndex].number;
@@ -93,7 +103,7 @@ export default class Numbers extends React.Component {
               <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
             </div>
             <div className="center-img">
-              <img id="image" src={imageUrl} onClick={this.handleClick}></img>
+              <img id="image" src={imageUrl} onClick={this.handleClick}></img>;
             </div>
             <div className="column-third">
               <i onClick={this.handleClick} className="fas fa-chevron-right"></i>

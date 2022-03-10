@@ -28,6 +28,14 @@
   text-align: end;
 }
 
+.spinner {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 6rem;
+  margin-left: 2rem;
+}
+
 .topics {
   flex-direction: column;
   justify-content: space-between;
@@ -121,6 +129,21 @@
     width: 15.625rem;
     margin: 6rem 0 1.125rem;
     font-size: 4rem;
+  }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3rem;
+    margin-left: 2rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 5.25rem !important;
+    font-size: 1.5rem !important;
+    white-space: pre-wrap;
   }
 }
 
@@ -224,6 +247,13 @@
     margin: 9.5rem 0 1.125rem;
     font-size: 7rem;
   }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
+  }
 }
 
 /* TABLET LANDSCAPE */
@@ -326,6 +356,21 @@
     width: 21rem;
     margin: 10rem 0 1.125rem;
     font-size: 7rem;
+  }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
   }
 }
 
@@ -432,5 +477,20 @@
   .word-text {
     font-size: 4.5rem;
     font-family: Jua, sans-serif;
+  }
+
+  .spinner {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+
+  .network-err {
+    color: black;
+    margin-top: 9.25rem !important;
+    font-size: 2.5rem !important;
+    white-space: pre-wrap;
   }
 }
