@@ -45,6 +45,12 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 - Users can color in an image using a color palette.
 ## Development
 
+### System Requirements
+
+..* Node.js 16 or higher
+..* NPM 8 or higher
+..* Postgres
+
 ### Getting Started
 
 1. Clone the repository.
