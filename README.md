@@ -57,7 +57,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 1. Clone the repository.
 
     ```shell
-    git clone git@github.com:mohamadalsyouf/fun-2-learn.git
+    git clone git@github.com:MohamadAlsyouf/Fun-2-Learn.git
     cd fun-2-learn
     ```
   
