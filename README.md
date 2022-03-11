@@ -37,6 +37,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 
 ## Preview
 
+![fun2lean readme](https://user-images.githubusercontent.com/93749120/157935484-5a9bf050-bda8-4f5a-bafc-37a3d5590b21.gif)
 
 ## Stretch features I'd like to implement
 
