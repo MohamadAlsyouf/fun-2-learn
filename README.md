@@ -2,6 +2,8 @@
 
 A full stack web application for children who want to learn the alphabet, words, colors, and numbers.
 
+My biggest inspiration behind building this web application was my best friend, my four year old cousin with autism. As many young children nowadays, my cousin loves browsing YouTube for hours on end, intrigued by the vast amount of videos. Many times, like us all, they stumble upon learning material that might not cater to them, whether it be a video in a different language or an irrelavent subject. I wanted to create a more hands-on, fun, and interactive learning application that not only can my cousin benefit from, but young children all together. From the moment I started learning to program, I knew that I wanted to build upon and utilize my newly acquired skills to help others, and [Fun 2 Learn](https://fun-2-learn.herokuapp.com/) is just the start.
+
 ## Technologies Used
 
 - React
@@ -23,21 +25,24 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 
 ## Features
 
-- Users can search for similar artists.
-- Users can view a list of similar artists with music videos
-- Users can add an artist to their list of liked artists.
-- Users can view a list of their Liked Artists.
-- Users can delete an artist from their Liked Artists list.
+- Users can select a category of learning topics.
+- Users can view the letters of the alphabet.
+- Users can hear the letters of the alphabet.
+- Users can view corresponding images for each letter.
+- Users can view a variety of colors.
+- Users can listen to the color spelling out loud.
+- Users can view an image correlating to the current color.
+- Users can view a range of numbers.
+- Users can listen to the number spelling out loud.
 
 ## Preview
 
 
 ## Stretch features I'd like to implement
 
-- Users can create a playlist to add artists to.
-- Users can add a note for each liked artist.
-- Users can edit a liked artist's YouTube URL.
-
+- Users can drag and drop letters to spell words.
+- Users can select an image from a list of images based off a given color.
+- Users can color in an image using a color palette.
 ## Development
 
 ### Getting Started
