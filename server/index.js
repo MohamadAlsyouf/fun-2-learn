@@ -16,76 +16,72 @@ app.use(staticMiddleware);
 const jsonMiddleware = express.json();
 app.use(jsonMiddleware);
 
-app.get('/api/letters', (req, res) => {
+app.get('/api/letters', async (req, res) => {
   const sql = `
     select *
       from "letters"
      order by "letterId"
   `;
-  db.query(sql)
-    .then(result => {
-      res.json(result.rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an unexpected error occurred'
-      });
+  try {
+    const result = await db.query(sql);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: 'an unexpected error occurred'
     });
+  }
 });
 
-app.get('/api/words', (req, res) => {
+app.get('/api/words', async (req, res) => {
   const sql = `
     select *
       from "words"
     order by "letterId"
   `;
-  db.query(sql)
-    .then(result => {
-      res.json(result.rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an unexpected error occured'
-      });
+  try {
+    const result = await db.query(sql);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: 'an unexpected error occured'
     });
+  }
 });
 
-app.get('/api/colors', (req, res) => {
+app.get('/api/colors', async (req, res) => {
   const sql = `
     select *
       from "colors"
     order by "colorId"
   `;
-  db.query(sql)
-    .then(result => {
-      res.json(result.rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an unexpected error occured'
-      });
+  try {
+    const result = await db.query(sql);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: 'an unexpected error occured'
     });
+  }
 });
 
-app.get('/api/numbers', (req, res) => {
+app.get('/api/numbers', async (req, res) => {
   const sql = `
     select *
       from "numbers"
     order by "numberId"
   `;
-  db.query(sql)
-    .then(result => {
-      res.json(result.rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an unexpected error occured'
-      });
+  try {
+    const result = await db.query(sql);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: 'an unexpected error occured'
     });
+  }
 });
 
 app.use(errorMiddleware);
