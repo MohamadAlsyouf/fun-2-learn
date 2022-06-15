@@ -20,31 +20,29 @@ export default class Letters extends React.Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
-  componentDidMount() {
-    fetch('api/letters')
-      .then(res => res.json())
-      .then(letters => {
-        this.setState({ letters, isLoading: false });
-        if (this.state.playA === false) {
-          this.autoA = setTimeout(() => {
-            this.setState({ playA: true });
-            const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
-          }, 1300);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({ error: true, isLoading: false });
-      });
-    fetch('api/words')
-      .then(res => res.json())
-      .then(words => {
-        this.setState({ words, isLoading: false });
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({ error: true, isLoading: false });
-      });
+  async componentDidMount() {
+    try {
+      const res = await fetch('api/letters');
+      const letters = await res.json();
+      this.setState({ letters, isLoading: false });
+      if (this.state.playA === false) {
+        this.autoA = setTimeout(() => {
+          this.setState({ playA: true });
+          const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
+        }, 1300);
+      }
+    } catch (err) {
+      console.error(err);
+      this.setState({ error: true, isLoading: false });
+    }
+    try {
+      const res2 = await fetch('api/words');
+      const words = await res2.json();
+      this.setState({ words, isLoading: false });
+    } catch (err) {
+      console.error(err);
+      this.setState({ error: true, isLoading: false });
+    }
     window.addEventListener('keydown', this.handlePress);
   }
 
