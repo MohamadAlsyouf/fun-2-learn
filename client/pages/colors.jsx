@@ -21,22 +21,21 @@ export default class Colors extends React.Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
-  componentDidMount() {
-    fetch('api/colors')
-      .then(res => res.json())
-      .then(colors => {
-        this.setState({ colors, isLoading: false });
-        if (this.state.playRed === false) {
-          this.autoRed = setTimeout(() => {
-            this.setState({ playRed: true });
-            const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
-          }, 1200);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({ error: true, isLoading: false });
-      });
+  async componentDidMount() {
+    try {
+      const res = await fetch('api/colors');
+      const colors = await res.json();
+      this.setState({ colors, isLoading: false });
+      if (this.state.playRed === false) {
+        this.autoRed = setTimeout(() => {
+          this.setState({ playRed: true });
+          const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
+        }, 1200);
+      }
+    } catch (err) {
+      console.error(err);
+      this.setState({ error: true, isLoading: false });
+    }
     window.addEventListener('keydown', this.handlePress);
   }
 
