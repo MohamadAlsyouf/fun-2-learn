@@ -18,22 +18,21 @@ export default class Numbers extends React.Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
-  componentDidMount() {
-    fetch('api/numbers')
-      .then(res => res.json())
-      .then(numbers => {
-        this.setState({ numbers, isLoading: false });
-        if (this.state.playZero === false) {
-          this.autoZero = setTimeout(() => {
-            this.setState({ playZero: true });
-            const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
-          }, 1300);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({ error: true, isLoading: false });
-      });
+  async componentDidMount() {
+    try {
+      const res = await fetch('api/numbers');
+      const numbers = await res.json();
+      this.setState({ numbers, isLoading: false });
+      if (this.state.playZero === false) {
+        this.autoZero = setTimeout(() => {
+          this.setState({ playZero: true });
+          const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
+        }, 1300);
+      }
+    } catch (err) {
+      console.error(err);
+      this.setState({ error: true, isLoading: false });
+    }
     window.addEventListener('keydown', this.handlePress);
   }
 
