@@ -42,7 +42,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 ## Stretch features I'd like to implement
 
 - Users can drag and drop letters to spell words.
-- Users can select an image from a list of images based off a given color.
+- Users can match an image from a list of images based off a given color.
 - Users can color in an image using a color palette.
 ## Development
 
