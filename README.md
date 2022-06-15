@@ -2,7 +2,7 @@
 
 A full stack web application for children who want to learn the alphabet, words, numbers, and colors.
 
-My best friend, my four-year-old autistic cousin, was the driving force behind the development of this web application. My cousin, like many young children nowadays, enjoys browsing YouTube for hours on end, enthralled by the vast array of videos. Many times, they, like us, come across learning material that does not cater to them, whether it is a video in a different language or an irrelevant subject. I wanted to create a more hands-on, fun, and interactive learning application that not only my cousin, but all young children, could benefit from. I knew I wanted to use my newly acquired programming skills to help others from the moment I began learning to code, and [Fun 2 Learn](https://fun-2-learn.herokuapp.com/) is just the start.
+My best friend, my four-year-old autistic cousin, was the driving force behind the development of this web application. My cousin, like many young children nowadays, enjoys browsing YouTube for hours on end, enthralled by the vast array of videos. Many times, they, like us, come across learning material that does not cater to them; whether it is a video in a different language or an irrelevant subject. I wanted to create a more hands-on, fun, and interactive learning application that not only my cousin, but all young children, could benefit from. I knew I wanted to use my newly acquired programming skills to help others from the moment I began learning to code, and [Fun 2 Learn](https://fun-2-learn.herokuapp.com/) is just the start.
 
 ## Technologies Used
 
