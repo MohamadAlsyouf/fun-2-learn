@@ -7,6 +7,7 @@ My best friend, my four-year-old autistic cousin, was the driving force behind t
 ## Technologies Used
 
 - React
+- React Hooks
 - PostgreSQL
 - Node.js
 - Express.js
