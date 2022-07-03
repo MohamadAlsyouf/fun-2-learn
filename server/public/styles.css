@@ -101,6 +101,11 @@ img {
 .word-text {
   font-size: 3.5rem;
   font-family: Jua, sans-serif;
+  cursor: pointer;
+}
+
+#image {
+  cursor: pointer;
 }
 
 @keyframes ldio-mpfig5gfwfi {
