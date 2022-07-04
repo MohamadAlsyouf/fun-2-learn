@@ -1,161 +1,159 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ShowLoader from '../components/loader';
 import ShowError from '../components/error';
 
-export default class Letters extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentIndex: 0,
-      letters: [],
-      words: [],
-      playA: false,
-      wordShowing: false,
-      isLoading: true,
-      error: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.nextLetter = this.nextLetter.bind(this);
-    this.previousLetter = this.previousLetter.bind(this);
-    this.handlePress = this.handlePress.bind(this);
-  }
+function Letters() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [letters, setLetters] = useState([]);
+  const [words, setWords] = useState([]);
+  const [playA, setPlayA] = useState(false);
+  const [wordShowing, setWordShowing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  async componentDidMount() {
+  const mounted = useRef();
+
+  // this hook replaces componentDidMount & componentDidUpdate
+  useEffect(() => {
+    // componentDidMount
+    if (!mounted.current) {
+      getLetterData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate
+      const audio = new Audio(letters[0][currentIndex].audioUrl); audio.play();
+    }
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (playA === false) {
+      const autoA = setTimeout(() => {
+        setPlayA(true);
+        const audio = new Audio(letters[0][0].audioUrl); audio.play();
+      }, 1300);
+      return () => clearTimeout(autoA);
+    }
+  }, [letters]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handlePress);
+    return () => {
+      window.removeEventListener('keydown', handlePress);
+    };
+  }, [letters, words, currentIndex, wordShowing]);
+
+  const getLetterData = async () => {
     try {
       const res = await fetch('api/letters');
       const letters = await res.json();
-      this.setState({ letters, isLoading: false });
-      if (this.state.playA === false) {
-        this.autoA = setTimeout(() => {
-          this.setState({ playA: true });
-          const audio = new Audio(this.state.letters[0].audioUrl); audio.play();
-        }, 1300);
-      }
+      setLetters([letters]);
+      setIsLoading(false);
     } catch (err) {
       console.error(err);
-      this.setState({ error: true, isLoading: false });
+      setError(true);
+      setIsLoading(false);
     }
     try {
       const res2 = await fetch('api/words');
       const words = await res2.json();
-      this.setState({ words, isLoading: false });
+      setWords([words]);
+      setIsLoading(false);
     } catch (err) {
       console.error(err);
-      this.setState({ error: true, isLoading: false });
+      setError(true);
+      setIsLoading(false);
     }
-    window.addEventListener('keydown', this.handlePress);
-  }
+  };
 
-  componentWillUnmount() {
-    clearTimeout(this.autoA);
-    window.removeEventListener('keydown', this.handlePress);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.currentIndex !== prevState.currentIndex) {
-      const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
-    }
-  }
-
-  handleClick(event, index) {
+  const handleClick = (event, index) => {
     if (event.target.className === 'fas fa-chevron-right') {
-      this.nextLetter();
+      nextLetter();
     } else if (event.target.className === 'fas fa-chevron-left') {
-      this.previousLetter();
+      previousLetter();
     }
     if (event.target.id === 'letter') {
-      this.setState({ wordShowing: true });
-      const audio = new Audio(this.state.words[this.state.currentIndex].audioUrl); audio.play();
+      setWordShowing(true);
+      const audio = new Audio(words[0][currentIndex].audioUrl); audio.play();
     } else if (event.target.id === 'word') {
-      this.setState({ wordShowing: false });
-      const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
+      setWordShowing(false);
+      const audio = new Audio(letters[0][currentIndex].audioUrl); audio.play();
     } else {
-      this.setState({ wordShowing: false });
+      setWordShowing(false);
     }
-  }
+  };
 
-  handlePress() {
-    const { wordShowing } = this.state;
+  const handlePress = () => {
     if (event.key === 'ArrowRight') {
-      this.nextLetter();
-      this.setState({ wordShowing: false });
+      nextLetter();
+      setWordShowing(false);
     } else if (event.key === 'ArrowLeft') {
-      this.previousLetter();
-      this.setState({ wordShowing: false });
+      previousLetter();
+      setWordShowing(false);
     }
-
     if (event.key === ' ') {
-      this.setState({ wordShowing: !wordShowing });
+      setWordShowing(!wordShowing);
       if (!wordShowing) {
-        const audio = new Audio(this.state.words[this.state.currentIndex].audioUrl); audio.play();
+        const audio = new Audio(words[0][currentIndex].audioUrl); audio.play();
       } else if (wordShowing) {
-        const audio = new Audio(this.state.letters[this.state.currentIndex].audioUrl); audio.play();
+        const audio = new Audio(letters[0][currentIndex].audioUrl); audio.play();
       }
     }
-  }
+  };
 
-  nextLetter() {
-    if (this.state.currentIndex >= this.state.letters.length - 1) {
-      this.setState({
-        currentIndex: 0
-      });
+  const nextLetter = () => {
+    if (currentIndex >= letters[0].length - 1) {
+      setCurrentIndex(0);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex + 1
-      });
+      setCurrentIndex(currentIndex + 1);
     }
-  }
+  };
 
-  previousLetter() {
-    if (this.state.currentIndex <= 0) {
-      this.setState({
-        currentIndex: this.state.letters.length - 1
-      });
+  const previousLetter = () => {
+    if (currentIndex <= 0) {
+      setCurrentIndex(letters[0].length - 1);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex - 1
-      });
+      setCurrentIndex(currentIndex - 1);
     }
+  };
+
+  if (isLoading) return <ShowLoader />;
+  if (error) return <ShowError />;
+  if (letters.length === 0) return null;
+  if (words.length === 0) return null;
+  const imageUrl = letters[0][currentIndex].imageUrl;
+  const wordImage = words[0][currentIndex].imageUrl;
+  const word = words[0][currentIndex].word;
+  let display;
+  let showImageText;
+
+  if (!wordShowing) {
+    display = <img id='letter' src={imageUrl} onClick={handleClick}></img>;
+    showImageText = <span className='word-text'></span>;
+  } else if (wordShowing) {
+    display = <img id='word' src={wordImage} onClick={handleClick}></img>;
+    showImageText = <span className='word-text'>{word}</span>;
   }
 
-  render() {
-    if (this.state.isLoading) return <ShowLoader />;
-    if (this.state.error) return <ShowError />;
-    if (this.state.letters.length === 0) return null;
-    if (this.state.words.length === 0) return null;
-    const { imageUrl } = this.state.letters[this.state.currentIndex];
-    const wordImage = this.state.words[this.state.currentIndex].imageUrl;
-    const word = this.state.words[this.state.currentIndex].word;
-    let display;
-    let showImageText;
-
-    if (!this.state.wordShowing) {
-      display = <img id='letter' src={imageUrl} onClick={this.handleClick}></img>;
-      showImageText = <span className='word-text'></span>;
-    } else if (this.state.wordShowing) {
-      display = <img id='word' src={wordImage} onClick={this.handleClick}></img>;
-      showImageText = <span className='word-text'>{word}</span>;
-    }
-
-    return (
-      <div className="container">
-        <div className="style">
-          <div className="row">
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-            </div>
-            <div className="center-img">
-              {display}
-            </div>
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-            </div>
+  return (
+    <div className="container">
+      <div className="style">
+        <div className="row">
+          <div className="column-third">
+            <i onClick={handleClick} className="fas fa-chevron-left"></i>
           </div>
-          <div className='col-full text-align'>
-            {showImageText}
+          <div className="center-img">
+            {display}
+          </div>
+          <div className="column-third">
+            <i onClick={handleClick} className="fas fa-chevron-right"></i>
           </div>
         </div>
+        <div className='col-full text-align'>
+          {showImageText}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Letters;
