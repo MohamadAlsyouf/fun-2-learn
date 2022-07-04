@@ -14,7 +14,6 @@ function Letters() {
   const mounted = useRef();
 
   useEffect(() => {
-    // componentDidMount
     if (!mounted.current) {
       getLetterData();
       mounted.current = true;
