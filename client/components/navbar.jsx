@@ -9,7 +9,7 @@ export default class Navbar extends React.Component {
           <div className='container'>
               <div className='col-full row align-center'>
                 <a href='#'><h2 className='logo'>Fun 2 Learn</h2></a>
-                <img className='penguin' src='./images/pengoo.png'></img>
+              <a href='#'><img className='penguin' src='./images/pengoo.png'></img></a>
               </div>
           </div>
         </header>

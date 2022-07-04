@@ -1,57 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Snowfall from 'react-snowfall';
 import Sound from 'react-sound';
 
-export default class InteractiveBg extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = ({ isPlaying: false });
+function InteractiveBg() {
+  const [isPlaying, setIsPlaying] = useState(false);
 
-    this.handleClick = this.handleClick.bind(this);
-    this.playStatus = this.playStatus.bind(this);
-  }
+  const handleClick = () => {
+    setIsPlaying(!isPlaying);
+  };
 
-  handleClick() {
-    this.setState({
-      isPlaying: !this.state.isPlaying
-    });
-  }
-
-  playStatus() {
-    const { isPlaying } = this.state;
+  const playStatus = () => {
     if (isPlaying) return 'PLAYING';
     if (!isPlaying) return 'PAUSED';
+  };
+
+  let musicIcon;
+
+  if (isPlaying) {
+    musicIcon = <i onClick={handleClick} className="fas fa-volume-xmark"></i>;
+  } else {
+    musicIcon = <i onClick={handleClick} className="fas fa-music"></i>;
   }
 
-  render() {
-    const isPlaying = this.state.isPlaying;
-    let musicIcon;
-
-    if (isPlaying) {
-      musicIcon = <i onClick={this.handleClick} className="fas fa-volume-xmark"></i>;
-    } else {
-      musicIcon = <i onClick={this.handleClick} className="fas fa-music"></i>;
-    }
-
-    return (
-      <div className="container">
-        <Snowfall
-          color="white"
-          snowflakeCount={40}
-          height='100vh'
-          width='100vw'
-        />
-        <Sound
-          url='./images/monkey.mp3'
-          loop={true}
-          playStatus={this.playStatus()}
-          autoLoad={true}
-          volume={10}
-        />
-        <div className='col-full music-toggle'>
-          {musicIcon}
-        </div>
+  return (
+    <div className="container">
+      <Snowfall
+        color="white"
+        snowflakeCount={40}
+        height='100vh'
+        width='100vw'
+      />
+      <Sound
+        url='./images/monkey.mp3'
+        loop={true}
+        playStatus={playStatus()}
+        autoLoad={true}
+        volume={10}
+      />
+      <div className='col-full music-toggle'>
+        {musicIcon}
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default InteractiveBg;
