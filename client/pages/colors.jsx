@@ -1,176 +1,168 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ShowLoader from '../components/loader';
 import ShowError from '../components/error';
 
-export default class Colors extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentIndex: 0,
-      colors: [],
-      playRed: false,
-      imageShowing: false,
-      isLoading: true,
-      error: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.nextColor = this.nextColor.bind(this);
-    this.previousColor = this.previousColor.bind(this);
-    this.bgColor = this.bgColor.bind(this);
-    this.textColor = this.textColor.bind(this);
-    this.handlePress = this.handlePress.bind(this);
-  }
+function Colors() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [colors, setColors] = useState([]);
+  const [playRed, setPlayRed] = useState(false);
+  const [imageShowing, setImageShowing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  async componentDidMount() {
+  const mounted = useRef();
+
+  useEffect(() => {
+    if (!mounted.current) {
+      getColorData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate
+      const audio = new Audio(colors[0][currentIndex].colorAudioUrl); audio.play();
+    }
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (playRed === false) {
+      const autoRed = setTimeout(() => {
+        setPlayRed(true);
+        const audio = new Audio(colors[0][0].colorAudioUrl); audio.play();
+      }, 1300);
+      return () => clearTimeout(autoRed);
+    }
+  }, [colors]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handlePress);
+    return () => {
+      window.removeEventListener('keydown', handlePress);
+    };
+  }, [colors, currentIndex, imageShowing]);
+
+  const getColorData = async () => {
     try {
       const res = await fetch('api/colors');
       const colors = await res.json();
-      this.setState({ colors, isLoading: false });
-      if (this.state.playRed === false) {
-        this.autoRed = setTimeout(() => {
-          this.setState({ playRed: true });
-          const audio = new Audio(this.state.colors[0].colorAudioUrl); audio.play();
-        }, 1200);
-      }
+      setColors([colors]);
+      setIsLoading(false);
     } catch (err) {
       console.error(err);
-      this.setState({ error: true, isLoading: false });
+      setError(true);
+      setIsLoading(false);
     }
-    window.addEventListener('keydown', this.handlePress);
-  }
+  };
 
-  componentWillUnmount() {
-    clearTimeout(this.autoRed);
-    window.removeEventListener('keydown', this.handlePress);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.currentIndex !== prevState.currentIndex) {
-      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
-    }
-  }
-
-  handleClick(event, index) {
+  const handleClick = (event, index) => {
     if (event.target.className === 'fas fa-chevron-right') {
-      this.nextColor();
+      nextColor();
     } else if (event.target.className === 'fas fa-chevron-left') {
-      this.previousColor();
+      previousColor();
     }
 
     if (event.target.id === 'image') {
-      this.setState({ imageShowing: true });
-      const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
+      setImageShowing(true);
+      const audio = new Audio(colors[0][currentIndex].imageAudioUrl); audio.play();
     } else if (event.target.id === 'color') {
-      this.setState({ imageShowing: false });
-      const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
+      setImageShowing(false);
+      const audio = new Audio(colors[0][currentIndex].colorAudioUrl); audio.play();
     } else {
-      this.setState({ imageShowing: false });
+      setImageShowing(false);
     }
-  }
+  };
 
-  handlePress() {
-    const { imageShowing } = this.state;
+  const handlePress = () => {
     if (event.key === 'ArrowRight') {
-      this.nextColor();
-      this.setState({ imageShowing: false });
+      nextColor();
+      setImageShowing(false);
     } else if (event.key === 'ArrowLeft') {
-      this.previousColor();
-      this.setState({ imageShowing: false });
+      previousColor();
+      setImageShowing(false);
     }
-
     if (event.key === ' ') {
-      this.setState({ imageShowing: !imageShowing });
+      setImageShowing(!imageShowing);
       if (!imageShowing) {
-        const audio = new Audio(this.state.colors[this.state.currentIndex].imageAudioUrl); audio.play();
+        const audio = new Audio(colors[0][currentIndex].imageAudioUrl); audio.play();
       } else if (imageShowing) {
-        const audio = new Audio(this.state.colors[this.state.currentIndex].colorAudioUrl); audio.play();
+        const audio = new Audio(colors[0][currentIndex].colorAudioUrl); audio.play();
       }
     }
-  }
+  };
 
-  nextColor() {
-    if (this.state.currentIndex >= this.state.colors.length - 1) {
-      this.setState({
-        currentIndex: 0
-      });
+  const nextColor = () => {
+    if (currentIndex >= colors[0].length - 1) {
+      setCurrentIndex(0);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex + 1
-      });
+      setCurrentIndex(currentIndex + 1);
     }
-  }
+  };
 
-  previousColor() {
-    if (this.state.currentIndex <= 0) {
-      this.setState({
-        currentIndex: this.state.colors.length - 1
-      });
+  const previousColor = () => {
+    if (currentIndex <= 0) {
+      setCurrentIndex(colors[0].length - 1);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex - 1
-      });
+      setCurrentIndex(currentIndex - 1);
     }
-  }
+  };
 
-  bgColor() {
-    if (this.state.colors[this.state.currentIndex].color === 'red') return 'rgba(233, 30, 30, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'orange') return 'rgba(255, 152, 17, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'yellow') return 'rgba(255, 212, 34, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'green') return 'rgba(109, 200, 42, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'blue') return '';
-    if (this.state.colors[this.state.currentIndex].color === 'purple') return 'rgba(171, 109, 208, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'brown') return 'rgba(191, 125, 56, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'pink') return 'rgba(255, 110, 148, 0.8)';
-    if (this.state.colors[this.state.currentIndex].color === 'black') return 'rgba(0, 0, 0, 0.7)';
-    if (this.state.colors[this.state.currentIndex].color === 'white') return 'rgba(255, 255, 255, 0.8)';
-  }
+  const bgColor = () => {
+    if (colors[0][currentIndex].color === 'red') return 'rgba(233, 30, 30, 0.8)';
+    if (colors[0][currentIndex].color === 'orange') return 'rgba(255, 152, 17, 0.8)';
+    if (colors[0][currentIndex].color === 'yellow') return 'rgba(255, 212, 34, 0.8)';
+    if (colors[0][currentIndex].color === 'green') return 'rgba(109, 200, 42, 0.8)';
+    if (colors[0][currentIndex].color === 'blue') return '';
+    if (colors[0][currentIndex].color === 'purple') return 'rgba(171, 109, 208, 0.8)';
+    if (colors[0][currentIndex].color === 'brown') return 'rgba(191, 125, 56, 0.8)';
+    if (colors[0][currentIndex].color === 'pink') return 'rgba(255, 110, 148, 0.8)';
+    if (colors[0][currentIndex].color === 'black') return 'rgba(0, 0, 0, 0.7)';
+    if (colors[0][currentIndex].color === 'white') return 'rgba(255, 255, 255, 0.8)';
+  };
 
-  textColor() {
-    if (this.state.colors[this.state.currentIndex].color === 'black') return 'white';
+  const textColorBW = () => {
+    if (colors[0][currentIndex].color === 'black') return 'white';
     return '';
+  };
+
+  if (isLoading) return <ShowLoader />;
+  if (error) return <ShowError />;
+  if (colors.length === 0) return null;
+  const imageUrl = colors[0][currentIndex].imageUrl;
+  const color = colors[0][currentIndex].color;
+  const imageText = colors[0][currentIndex].imageText;
+  const colorClass = bgColor();
+  const textColor = textColorBW();
+  let display;
+  let showImageText;
+
+  if (!imageShowing) {
+    display = <span id='image' onClick={handleClick}>{color}</span>;
+    showImageText = <span className='word-text'></span>;
+  } else if (imageShowing) {
+    display = <img id='color' src={imageUrl} onClick={handleClick}></img>;
+    showImageText = <span className='word-text'>{imageText}</span>;
   }
 
-  render() {
-    if (this.state.isLoading) return <ShowLoader />;
-    if (this.state.error) return <ShowError />;
-    if (this.state.colors.length === 0) return null;
-    const { imageUrl } = this.state.colors[this.state.currentIndex];
-    const color = this.state.colors[this.state.currentIndex].color;
-    const { imageText } = this.state.colors[this.state.currentIndex];
-    const colorClass = this.bgColor();
-    const textColor = this.textColor();
-    let display;
-    let showImageText;
-
-    if (!this.state.imageShowing) {
-      display = <span id='image' onClick={this.handleClick}>{color}</span>;
-      showImageText = <span className='word-text'></span>;
-    } else if (this.state.imageShowing) {
-      display = <img id='color' src={imageUrl} onClick={this.handleClick}></img>;
-      showImageText = <span className='word-text'>{imageText}</span>;
-    }
-
-    return (
-      <>
-      <div className="container">
-          <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
-            <div className="row">
-              <div className="column-third">
-                <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-              </div>
-              <div className="center-img row">
-                {display}
-              </div>
-              <div className="column-third">
-                <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-              </div>
+  return (
+    <>
+    <div className="container">
+        <div className='style' style={{ backgroundColor: `${colorClass}`, color: `${textColor}` }}>
+          <div className="row">
+            <div className="column-third">
+              <i onClick={handleClick} className="fas fa-chevron-left"></i>
             </div>
-            <div className='col-full text-align'>
-              {showImageText}
+            <div className="center-img row">
+              {display}
+            </div>
+            <div className="column-third">
+              <i onClick={handleClick} className="fas fa-chevron-right"></i>
             </div>
           </div>
-      </div>
-      </>
-    );
-  }
+          <div className='col-full text-align'>
+            {showImageText}
+          </div>
+        </div>
+    </div>
+    </>
+  );
 }
+
+export default Colors;
