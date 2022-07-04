@@ -13,7 +13,6 @@ function Letters() {
 
   const mounted = useRef();
 
-  // this hook replaces componentDidMount & componentDidUpdate
   useEffect(() => {
     // componentDidMount
     if (!mounted.current) {
