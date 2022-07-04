@@ -1,118 +1,114 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ShowLoader from '../components/loader';
 import ShowError from '../components/error';
 
-export default class Numbers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentIndex: 0,
-      numbers: [],
-      playZero: false,
-      isLoading: true,
-      error: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.nextNumber = this.nextNumber.bind(this);
-    this.previousNumber = this.previousNumber.bind(this);
-    this.handlePress = this.handlePress.bind(this);
-  }
+function Numbers() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [numbers, setNumbers] = useState([]);
+  const [playZero, setPlayZero] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  async componentDidMount() {
+  const mounted = useRef();
+
+  useEffect(() => {
+    if (!mounted.current) {
+      getNumberData();
+      mounted.current = true;
+    } else {
+      // componentDidUpdate
+      const audio = new Audio(numbers[0][currentIndex].audioUrl); audio.play();
+    }
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (playZero === false) {
+      const autoZero = setTimeout(() => {
+        setPlayZero(true);
+        const audio = new Audio(numbers[0][0].audioUrl); audio.play();
+      }, 1300);
+      return () => clearTimeout(autoZero);
+    }
+  }, [numbers]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handlePress);
+    return () => {
+      window.removeEventListener('keydown', handlePress);
+    };
+  }, [numbers, currentIndex]);
+
+  const getNumberData = async () => {
     try {
       const res = await fetch('api/numbers');
       const numbers = await res.json();
-      this.setState({ numbers, isLoading: false });
-      if (this.state.playZero === false) {
-        this.autoZero = setTimeout(() => {
-          this.setState({ playZero: true });
-          const audio = new Audio(this.state.numbers[0].audioUrl); audio.play();
-        }, 1300);
-      }
+      setNumbers([numbers]);
+      setIsLoading(false);
     } catch (err) {
       console.error(err);
-      this.setState({ error: true, isLoading: false });
+      setError(true);
+      setIsLoading(false);
     }
-    window.addEventListener('keydown', this.handlePress);
-  }
+  };
 
-  componentWillUnmount() {
-    clearTimeout(this.autoZero);
-    window.removeEventListener('keydown', this.handlePress);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.currentIndex !== prevState.currentIndex) {
-      const audio = new Audio(this.state.numbers[this.state.currentIndex].audioUrl); audio.play();
-    }
-  }
-
-  handleClick(event, index) {
-    if (event.target.className === 'fas fa-chevron-right') this.nextNumber();
-    if (event.target.className === 'fas fa-chevron-left') this.previousNumber();
+  const handleClick = (event, index) => {
+    if (event.target.className === 'fas fa-chevron-right') nextNumber();
+    if (event.target.className === 'fas fa-chevron-left') previousNumber();
     if (event.target.id === 'image') {
-      const audio = new Audio(this.state.numbers[this.state.currentIndex].audioUrl); audio.play();
+      const audio = new Audio(numbers[0][currentIndex].audioUrl); audio.play();
     }
-  }
+  };
 
-  handlePress() {
-    if (event.key === 'ArrowRight') this.nextNumber();
-    if (event.key === 'ArrowLeft') this.previousNumber();
+  const handlePress = () => {
+    if (event.key === 'ArrowRight') nextNumber();
+    if (event.key === 'ArrowLeft') previousNumber();
     if (event.key === ' ') {
-      const audio = new Audio(this.state.numbers[this.state.currentIndex].audioUrl); audio.play();
+      const audio = new Audio(numbers[0][currentIndex].audioUrl); audio.play();
     }
-  }
+  };
 
-  nextNumber() {
-    if (this.state.currentIndex >= this.state.numbers.length - 1) {
-      this.setState({
-        currentIndex: 0
-      });
+  const nextNumber = () => {
+    if (currentIndex >= numbers[0].length - 1) {
+      setCurrentIndex(0);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex + 1
-      });
+      setCurrentIndex(currentIndex + 1);
     }
-  }
+  };
 
-  previousNumber() {
-    if (this.state.currentIndex <= 0) {
-      this.setState({
-        currentIndex: this.state.numbers.length - 1
-      });
+  const previousNumber = () => {
+    if (currentIndex <= 0) {
+      setCurrentIndex(numbers[0].length - 1);
     } else {
-      this.setState({
-        currentIndex: this.state.currentIndex - 1
-      });
+      setCurrentIndex(currentIndex - 1);
     }
-  }
+  };
 
-  render() {
-    if (this.state.isLoading) return <ShowLoader />;
-    if (this.state.error) return <ShowError />;
-    if (this.state.numbers.length === 0) return null;
-    const { imageUrl } = this.state.numbers[this.state.currentIndex];
-    const number = this.state.numbers[this.state.currentIndex].number;
+  if (isLoading) return <ShowLoader />;
+  if (error) return <ShowError />;
+  if (numbers.length === 0) return null;
+  const imageUrl = numbers[0][currentIndex].imageUrl;
+  const number = numbers[0][currentIndex].number;
 
-    return (
-      <div className="container">
-        <div className="style">
-          <div className="row">
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-left"></i>
-            </div>
-            <div className="center-img">
-              <img id="image" src={imageUrl} onClick={this.handleClick}></img>;
-            </div>
-            <div className="column-third">
-              <i onClick={this.handleClick} className="fas fa-chevron-right"></i>
-            </div>
+  return (
+    <div className="container">
+      <div className="style">
+        <div className="row">
+          <div className="column-third">
+            <i onClick={handleClick} className="fas fa-chevron-left"></i>
           </div>
-          <div className='col-full text-align'>
-            <span className='word-text'>{number}</span>;
+          <div className="center-img">
+            <img id="image" src={imageUrl} onClick={handleClick}></img>;
+          </div>
+          <div className="column-third">
+            <i onClick={handleClick} className="fas fa-chevron-right"></i>
           </div>
         </div>
+        <div className='col-full text-align'>
+          <span className='word-text'>{number}</span>;
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Numbers;
