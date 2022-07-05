@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './pages/home';
 import InteractiveBg from './components/background';
 import Navbar from './components/navbar';
@@ -6,23 +6,17 @@ import parseRoute from './lib/parse-route';
 import Letters from './pages/letters';
 import Colors from './pages/colors';
 import Numbers from './pages/numbers';
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      route: parseRoute(window.location.hash)
-    };
-  }
 
-  componentDidMount() {
+function App() {
+  const [route, setRoute] = useState(parseRoute(window.location.hash));
+
+  useEffect(() => {
     window.addEventListener('hashchange', () => {
-      const parsedRoute = parseRoute(window.location.hash);
-      this.setState({ route: parsedRoute });
+      setRoute(parseRoute(window.location.hash));
     });
-  }
+  }, []);
 
-  renderPage() {
-    const { route } = this.state;
+  const renderPage = () => {
     if (route.path === '') {
       return <Home />;
     }
@@ -35,15 +29,15 @@ export default class App extends React.Component {
     if (route.path === 'numbers') {
       return <Numbers />;
     }
-  }
+  };
 
-  render() {
-    return (
-        <>
-          <Navbar />
-          <InteractiveBg />
-          { this.renderPage() }
-        </>
-    );
-  }
+  return (
+    <>
+      <Navbar />
+      <InteractiveBg />
+      {renderPage()}
+    </>
+  );
 }
+
+export default App;
