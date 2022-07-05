@@ -1,10 +1,13 @@
-# Fun 2 Learn
+# Fun 2 Learn 
 
 A full stack web application for children who want to learn the alphabet, words, numbers, and colors.
 
 My best friend, my four-year-old autistic cousin, was the driving force behind the development of this web application. My cousin, like many young children nowadays, enjoys browsing YouTube for hours on end, enthralled by the vast array of videos. Many times, they, like us, come across learning material that does not cater to them; whether it is a video in a different language or an irrelevant subject. I wanted to create a more hands-on, fun, and interactive learning application that not only my cousin, but all young children, could benefit from. I knew I wanted to use my newly acquired programming skills to help others from the moment I began learning to code, and [Fun 2 Learn](https://fun-2-learn.herokuapp.com/) is just the start.
 
-## Technologies Used
+![pengoo](https://user-images.githubusercontent.com/93749120/177248904-3129cdbd-a4be-4057-9794-0bfdfaafd429.png)
+
+
+## Technologies Used 🛠️
 
 - React
 - React Hooks
@@ -20,7 +23,7 @@ My best friend, my four-year-old autistic cousin, was the driving force behind t
 - JavaScript
 - Heroku
 
-## Live Demo
+## Live Demo :rocket:
 
 Try the application live at https://fun-2-learn.herokuapp.com/
 
@@ -45,7 +48,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 - Users can drag and drop letters to spell words.
 - Users can match an image from a list of images based off a given color.
 - Users can color in an image using a color palette.
-## Development
+## Development :building_construction:
 
 ### System Requirements
 
