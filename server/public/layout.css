@@ -49,6 +49,11 @@
   margin-bottom: 1.875rem;
 }
 
+img.topic-img:hover {
+  border: 10px solid #2196f3;
+  border-radius: 10%;
+}
+
 /* PHONE LANDSCAPE */
 @media screen and (min-width: 736px) {
   .container {
