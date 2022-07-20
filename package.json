@@ -2,7 +2,8 @@
   "name": "final-project",
   "version": "1.0.0",
   "engines": {
-    "node": "16.x"
+    "node": "16.13.1",
+    "npm": "8.1.2"
   },
   "private": true,
   "description": "A full stack JavaScript solo project.",
