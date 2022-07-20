@@ -1,6 +1,9 @@
 {
   "name": "final-project",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "private": true,
   "description": "A full stack JavaScript solo project.",
   "main": "server/index.js",
