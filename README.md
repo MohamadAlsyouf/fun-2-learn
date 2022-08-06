@@ -17,7 +17,8 @@ My best friend, my four-year-old autistic cousin, was the driving force behind t
 - Babel
 - Webpack
 - Dotenv
-- Node-Fetch
+- Node
+- Fetch API
 - HTML5
 - CSS3
 - JavaScript
