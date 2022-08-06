@@ -38,6 +38,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 - Users can view an image correlating to the current color.
 - Users can view a range of numbers.
 - Users can listen to the number spelling out loud.
+- Users can toggle background music to play throughout the app.
 
 ## Preview
 
