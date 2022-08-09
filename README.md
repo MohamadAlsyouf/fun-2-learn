@@ -6,7 +6,6 @@ My best friend, my four-year-old autistic cousin, was the driving force behind t
 
 ![pengoo](https://user-images.githubusercontent.com/93749120/177248904-3129cdbd-a4be-4057-9794-0bfdfaafd429.png)
 
-
 ## Technologies Used 🛠️
 
 - React
