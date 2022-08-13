@@ -43,7 +43,7 @@ Try the application live at https://fun-2-learn.herokuapp.com/
 
 ### Desktop 💻
 ![fun2learn desktop](https://user-images.githubusercontent.com/93749120/179877934-6d125070-09f3-4a05-9794-ab39ab26e9fa.gif)
-### Mobile 📱
+### Mobile/Tablet 📱
 ![fun2learn mobile](https://user-images.githubusercontent.com/93749120/179878027-9a0fd36f-35d8-460e-b504-77c7ddc2a9e0.gif)
 
 
